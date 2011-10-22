@@ -50,7 +50,7 @@ public class Connector extends Thread {
                     Host h = new Host(connection.getIPAddress().toString(), connection.getIPAddress().getPort());
 
                     HostCache.addHost(h);
-                    HostArray.addConnection(connection);
+                    HostArray.IncomingHostsaddConnection(connection);
                     
                     Server server = new Server(connection);
                     server.start();

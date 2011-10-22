@@ -44,7 +44,7 @@ public class Listener extends Thread {
                     downloadserver.start();
                     continue;
 
-                } else if (HostArray.getCount() >= Preferences.MAX_LIVE) {
+                } else if (HostArray.IncomingHostsgetCount() >= Preferences.MAX_LIVE) {
                     connection.getTextReader().readLine(); // Gets rid of the extra newline
                     connection.getByteWriter().write(busy, 0, busy.length);
                     connection.getByteWriter().flush();
@@ -60,7 +60,7 @@ public class Listener extends Thread {
 //                    if (!HostArray.isLive(connection)) {
                         Server server = new Server(connection);
                         server.start();
-                        HostArray.addConnection(connection);
+                        HostArray.IncomingHostsaddConnection(connection);
                         HostCache.addConnection(connection);
 //                    }
 //                    else {

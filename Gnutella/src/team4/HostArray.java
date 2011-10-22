@@ -6,83 +6,84 @@ import java.util.Arrays;
 
 public class HostArray {
 
-    private static Connection[] hosts;
+    private static Connection[] IncomingHosts;
+    public static Connection[] OutgoingHosts;
 
-    public static boolean isNull() {
-        if (hosts == null) {
+    public static boolean IncomingHostisNull() {
+        if (IncomingHosts == null) {
             return true;
         } else {
             return false;
         }
     }
 
-    public static synchronized int getCount() {
-        if (isNull()) {
+    public static synchronized int IncomingHostsgetCount() {
+        if (IncomingHostisNull()) {
             return 0;
         } else {
-            return hosts.length;
+            return IncomingHosts.length;
         }
     }
 
-    public static synchronized void addConnection(Connection c) {
+    public static synchronized void IncomingHostsaddConnection(Connection c) {
         System.out.println("phachseo 111111111111");
-        if (isNull()) {
+        if (IncomingHostisNull()) {
             System.out.println("phachseo 2222222222222");
-            hosts = new Connection[1];
-            hosts[0] = c;
+            IncomingHosts = new Connection[1];
+            IncomingHosts[0] = c;
             Searcher.updateAddedConnection(c);
-        } else if (!isLive(c)) {
+        } else if (!IncomingHostsisLive(c)) {
             System.out.println("phachseo 33333333333333");
-            Connection[] temp = new Connection[hosts.length + 1];
-            System.arraycopy(hosts, 0, temp, 0, hosts.length);
-            temp[hosts.length] = c;
-            hosts = temp;
+            Connection[] temp = new Connection[IncomingHosts.length + 1];
+            System.arraycopy(IncomingHosts, 0, temp, 0, IncomingHosts.length);
+            temp[IncomingHosts.length] = c;
+            IncomingHosts = temp;
             Searcher.updateAddedConnection(c);
         }
     }
 
-    public static synchronized void removeConnection(Connection c) {
-        removeConnection(c.getIPAddress());
+    public static synchronized void IncomingHostsremoveConnection(Connection c) {
+        IncomingHostsremoveConnection(c.getIPAddress());
     }
 
-    public static synchronized void removeConnection(IPAddress ip) {
-        if (!(isNull()) && isLive(ip)) {
-            Connection[] temp = new Connection[hosts.length - 1];
+    public static synchronized void IncomingHostsremoveConnection(IPAddress ip) {
+        if (!(IncomingHostisNull()) && IncomingHostsisLive(ip)) {
+            Connection[] temp = new Connection[IncomingHosts.length - 1];
             int j = 0;
-            for (int i = 0; i < hosts.length; i++) {
-                if (ip.equals(hosts[i].getIPAddress())) {
+            for (int i = 0; i < IncomingHosts.length; i++) {
+                if (ip.equals(IncomingHosts[i].getIPAddress())) {
                     continue;
                 }
-                temp[j] = hosts[i];
+                temp[j] = IncomingHosts[i];
                 j++;
             }
-            hosts = temp;
+            IncomingHosts = temp;
             Searcher.updateRemovedConnection(ip);
         }
     }
 
-    public static synchronized Connection getConnection(int i) {
-        if ((!isNull() && (i < getCount()))) {
-            return hosts[i];
+    public static synchronized Connection IncomingHostsgetConnection(int i) {
+        if ((!IncomingHostisNull() && (i < IncomingHostsgetCount()))) {
+            return IncomingHosts[i];
         } else {
             return null;
         }
     }
 
-    public static synchronized Connection getConnection(IPAddress ip) {
+    public static synchronized Connection IncomingHostsgetConnection(IPAddress ip) {
         Connection c = null;
-        for (int i = 0; i < hosts.length; i++) {
-            if (ip.equals(hosts[i].getIPAddress())) {
-                c = hosts[i];
+        for (int i = 0; i < IncomingHosts.length; i++) {
+            if (ip.equals(IncomingHosts[i].getIPAddress())) {
+                c = IncomingHosts[i];
             }
         }
         return c;
     }
 
-    public static synchronized boolean isLive(String ipString) {
-        if (!isNull()) {
-            for (int i = 0; i < hosts.length; i++) {
-                InetAddress inet = hosts[i].getSocket().getInetAddress();
+    public static synchronized boolean IncomingHostsisLive(String ipString) {
+        if (!IncomingHostisNull()) {
+            for (int i = 0; i < IncomingHosts.length; i++) {
+                InetAddress inet = IncomingHosts[i].getSocket().getInetAddress();
                 if ((ipString.equals(inet.getHostName())) || (ipString.equals(inet.getHostAddress()))) {
                     //          System.out.println(ipString + " ?= " + inet.getHostName());
                     //          System.out.println(ipString + " ?= " + inet.getHostAddress());
@@ -96,16 +97,16 @@ public class HostArray {
         }
     }
 
-    public static synchronized boolean isLive(Connection c) {
-        return (isLive(c.getIPAddress()));
+    public static synchronized boolean IncomingHostsisLive(Connection c) {
+        return (IncomingHostsisLive(c.getIPAddress()));
     }
 
-    public static synchronized boolean isLive(IPAddress ip) {
+    public static synchronized boolean IncomingHostsisLive(IPAddress ip) {
 //        try {
             System.out.println("IP to compare : " + ip.toString());
-            for (int i = 0; i < hosts.length; i++) {
-                System.out.println("ip in hosts : " + hosts[i].getIPAddress().toString());
-                if (ip.equals(hosts[i].getIPAddress())) {
+            for (int i = 0; i < IncomingHosts.length; i++) {
+                System.out.println("ip in hosts : " + IncomingHosts[i].getIPAddress().toString());
+                if (ip.equals(IncomingHosts[i].getIPAddress())) {
                     return true;
                 }
             }
@@ -115,4 +116,133 @@ public class HostArray {
 //            return false;
 //        }
     }
+
+
+
+
+
+
+
+
+     public static boolean OutgoingHostisNull() {
+        if (OutgoingHosts == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static synchronized int OutgoingHostgetCount() {
+        if (OutgoingHostisNull()) {
+            return 0;
+        } else {
+            return OutgoingHosts.length;
+        }
+    }
+
+    public static synchronized void OutgoingHostaddConnection(Connection c) {
+        System.out.println("phachseo 111111111111");
+        if (OutgoingHostisNull()) {
+            System.out.println("phachseo 2222222222222");
+            OutgoingHosts = new Connection[1];
+           OutgoingHosts[0] = c;
+            Searcher.updateAddedConnection(c);
+        } else if (!OutgoingHostsisLive(c)) {
+            System.out.println("phachseo 33333333333333");
+            Connection[] temp = new Connection[OutgoingHosts.length + 1];
+            System.arraycopy(OutgoingHosts, 0, temp, 0, OutgoingHosts.length);
+            temp[OutgoingHosts.length] = c;
+            OutgoingHosts = temp;
+            Searcher.updateAddedConnection(c);
+        }
+    }
+
+    public static synchronized void OutgoingHostsremoveConnection(Connection c) {
+        IncomingHostsremoveConnection(c.getIPAddress());
+    }
+
+    public static synchronized void OutgoingHostsremoveConnection(IPAddress ip) {
+        if (!(OutgoingHostisNull()) && OutgoingHostsisLive(ip)) {
+            Connection[] temp = new Connection[OutgoingHosts.length - 1];
+            int j = 0;
+            for (int i = 0; i < OutgoingHosts.length; i++) {
+                if (ip.equals(OutgoingHosts[i].getIPAddress())) {
+                    continue;
+                }
+                temp[j] = OutgoingHosts[i];
+                j++;
+            }
+            OutgoingHosts = temp;
+            Searcher.updateRemovedConnection(ip);
+        }
+    }
+
+    public static synchronized Connection OutgoingHostsgetConnection(int i) {
+        if ((!OutgoingHostisNull() && (i < OutgoingHostgetCount()))) {
+            return OutgoingHosts[i];
+        } else {
+            return null;
+        }
+    }
+
+    public static synchronized Connection OutgoingHostsgetConnection(IPAddress ip) {
+        Connection c = null;
+        for (int i = 0; i < OutgoingHosts.length; i++) {
+            if (ip.equals(OutgoingHosts[i].getIPAddress())) {
+                c = OutgoingHosts[i];
+            }
+        }
+        return c;
+    }
+
+    public static synchronized boolean OutgoingHostsisLive(String ipString) {
+        if (!OutgoingHostisNull()) {
+            for (int i = 0; i < OutgoingHosts.length; i++) {
+                InetAddress inet = OutgoingHosts[i].getSocket().getInetAddress();
+                if ((ipString.equals(inet.getHostName())) || (ipString.equals(inet.getHostAddress()))) {
+                    //          System.out.println(ipString + " ?= " + inet.getHostName());
+                    //          System.out.println(ipString + " ?= " + inet.getHostAddress());
+                    return true;
+                }
+
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
+
+    public static synchronized boolean OutgoingHostsisLive(Connection c) {
+        return (OutgoingHostsisLive(c.getIPAddress()));
+    }
+
+    public static synchronized boolean OutgoingHostsisLive(IPAddress ip) {
+//        try {
+            System.out.println("IP to compare : " + ip.toString());
+            for (int i = 0; i < OutgoingHosts.length; i++) {
+                System.out.println("ip in hosts : " + OutgoingHosts[i].getIPAddress().toString());
+                if (ip.equals(OutgoingHosts[i].getIPAddress())) {
+                    return true;
+                }
+            }
+            return false;
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

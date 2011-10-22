@@ -46,7 +46,7 @@ public class MRListener extends Thread {
                     MRerServer mrerserver = new MRerServer(connection, incoming);
                     mrerserver.start();
                     continue;
-                } else if (HostArray.getCount() >= Preferences.MAX_LIVE) {
+                } else if (HostArray.IncomingHostsgetCount() >= Preferences.MAX_LIVE) {
                     connection.getTextReader().readLine(); // Gets rid of the extra newline
                     connection.getByteWriter().write(busy, 0, busy.length);
                     connection.getByteWriter().flush();
@@ -60,7 +60,7 @@ public class MRListener extends Thread {
                     connection.getByteWriter().flush();
                     Server server = new Server(connection);
                     server.start();
-                    HostArray.addConnection(connection);
+                    HostArray.IncomingHostsaddConnection(connection);
                     HostCache.addConnection(connection);
                 }
             }

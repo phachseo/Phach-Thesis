@@ -19,7 +19,7 @@ public class Pinger extends Thread {
             //   System.out.println("information host :"+ hosts+ "kb"+totalkb+"file"+totalfiles+ "id "+groupid);
             Searcher.updateInfo(hosts, totalkb, totalfiles);
 
-            System.out.println("Host Array La :" + HostArray.getCount());
+            System.out.println("Host Array La :" + HostArray.IncomingHostsgetCount());
             //   Searcher.updateGroupInfo(groupid);
 
             myping = new Ping();
