@@ -64,7 +64,7 @@ public class Listener extends Thread {
                         HostCache.addConnection(connection);
 //                    }
 //                    else {
-                        //JOptionPane.showMessageDialog(null, "LISTENER - ip : " + connection.getIPAddress().toString() + " da co trong HostArray");
+                        JOptionPane.showMessageDialog(null, "LISTENER - ip : " + connection.getIPAddress().toString() + " da co trong HostArray");
 //                    }
                 }
 
