@@ -6,7 +6,7 @@ public class Marmalade
 {
     public static void main(String[] args)
     {
-        
+        System.out.println("asfjhjksdf");
 
 	System.out.println("Setting up hash tables...");
 	QHandler.initQueryTable();
