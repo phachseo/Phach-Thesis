@@ -8,6 +8,7 @@ public class Marmalade
     {
         System.out.println("asfjhjksdf");
         System.out.println("asfjhjksdf  22222");
+ System.out.println("phachseo");
 
 	System.out.println("Setting up hash tables...");
 	QHandler.initQueryTable();
