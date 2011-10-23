@@ -70,9 +70,9 @@ public class NetworkManager {
 
     public static void notify(IPAddress ip) // Remove socket from open connection list, based on its IP.
     {
-        if (HostArray.OutgoingHostsisLive(ip)) {
+        if (HostArray.OutgoingHostsisLive(ip.toString())) {
             System.out.println("Killing " + ip);
-            Connection c = HostArray.OutgoingHostsgetConnection(ip);
+            Connection c = HostArray.OutgoingHostsgetConnection(ip.toString());
             try {
                 c.getSocket().close();
                 HostArray.OutgoingHostsremoveConnection(c);
