@@ -41,7 +41,8 @@ public class Formgrouphandler extends Thread {
 ////           
 //            Searcher.HashtableID.put(formgroup.getMessageID(), "aaa");
 ////            hashtablepro.out(Searcher.HashtableID);
-            int n = JOptionPane.showConfirmDialog(
+            System.out.println("chay vao formgroup handler");
+        int n = JOptionPane.showConfirmDialog(
                     null,
                     "Would you like to join the MapReduce Group ?",
                     "Inform Group",
@@ -78,10 +79,11 @@ public class Formgrouphandler extends Thread {
 
                     if (formgroup.getID() == b) {
 
-                        System.out.println(" port cua tui la:" + temp);
+                        //System.out.println(" port cua tui la:" + temp);
                         Response r = new Response(true, temp, Mine.getIPAddress(), a);
                         // System.out.println("port 3 la:" +port);
                         NetworkManager.writeToOne(formgroup.getIP(), r);
+                        System.out.println("goi goi tin ve");
                         MRListener mrlistent = new MRListener(temp);
                         mrlistent.start();
                         System.out.println(" mo? port ben server" + temp);
