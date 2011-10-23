@@ -103,7 +103,7 @@ public class Server extends Thread {
                 }
                 if (header.identify() == Packet.FORMGROUP_REQUEST) {
 
-                     System.out.println("Nhan dc phan hoi");
+                     
                     Formgroup form = new Formgroup(newpacket);
 
                     form.decrementTtl();
@@ -130,6 +130,7 @@ public class Server extends Thread {
                 }
                 if (header.identify() == Packet.RESPONSE) {
                     //  System.out.println("phachseo1");
+                    System.out.println("Nhan dc phan hoi");
                     Response res = new Response(newpacket);
 
 

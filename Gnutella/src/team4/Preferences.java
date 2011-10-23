@@ -5,15 +5,15 @@ import java.util.*;
 
 public class Preferences
 {
-  public static String  FILE_NAME = "preferences.txt";
+  public static String  FILE_NAME = "D:\\Phach-Thesis\\Gnutella\\src\\team4\\preferences.txt";
   public static int MAX_LIVE = 5;
   public static int MAX_CACHE = 100;
   public static boolean AUTO_CONNECT = true;
   public static int PINGER_TIME = 10000;
   public static int CONNECTOR_TIME = 10000;
   
-  public static String SHAREPATH = "temp";
-  public static String SAVEPATH = "temp1";
+  public static String SHAREPATH = "C:\\temp";
+  public static String SAVEPATH = "C:\\temp1";
   static SearchPanel form;
    
   public static Hashtable messagehashID;

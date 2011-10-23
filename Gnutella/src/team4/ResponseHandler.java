@@ -25,6 +25,7 @@ public class ResponseHandler extends Thread {
 
        // System.out.println("phachseo2");
         if (response.getAllow()) {
+            System.out.println("nhan dc phan hoi");
              Searcher.updateGroupInfo(response.getID());
             String ipname = response.getIP().toString();
             int port = response.getPort();
