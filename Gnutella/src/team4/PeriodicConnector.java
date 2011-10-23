@@ -19,7 +19,7 @@ public class PeriodicConnector extends Thread {
 
             for (int i = 0; i < HostCache.getCount(); i++) {
                 String ipString = HostCache.getIP(i);
-                System.out.println("Hostcache la :" + ipString);
+//                System.out.println("Hostcache la :" + ipString);
                 if (!(HostArray.OutgoingHostsisLive(ipString))) {
                     HostCache.connectHost(i);
                 }

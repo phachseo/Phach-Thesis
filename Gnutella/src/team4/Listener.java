@@ -18,6 +18,8 @@ public class Listener extends Thread {
     public static String PHACHSEO = "PHACHSEO NO1";
     public static byte[] phachseo = (PHACHSEO + "\n\n").getBytes();
 
+    public static int count = 0;
+
     public void run() {
         try {   //ServerSocket ss = new ServerSocket
             ServerSocket ss = new ServerSocket(LISTENING_PORT, MIN_PRIORITY, InetAddress.getLocalHost());
@@ -57,15 +59,17 @@ public class Listener extends Thread {
                     connection.getByteWriter().write(ready, 0, ready.length);
                     connection.getByteWriter().flush();
 
-                    if (!HostArray.IncomingHostsisLive(connection)) {
+//                    if (!HostArray.IncomingHostsisLive(connection)) {
+
+                    System.out.println("count = " + (++count));
                         Server server = new Server(connection);
                         server.start();
                         HostArray.IncomingHostsaddConnection(connection);
                         HostCache.addConnection(connection);
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(null, "LISTENER - ip : " + connection.getIPAddress().toString() + " da co trong HostArray");
-                    }
+//                    }
+//                    else {
+//                        JOptionPane.showMessageDialog(null, "LISTENER - ip : " + connection.getIPAddress().toString() + " da co trong HostArray");
+//                    }
                 }
 
             }
