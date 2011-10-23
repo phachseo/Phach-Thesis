@@ -13,7 +13,7 @@ public class PeriodicConnector extends Thread {
 
     public void run() {
         while (true) {
-            if ((HostArray.OutgoingHostgetCount() > 5) || !execute) {
+            if ((HostArray.OutgoingHostsgetCount() > 5) || !execute) {
                 continue;
             }
 
