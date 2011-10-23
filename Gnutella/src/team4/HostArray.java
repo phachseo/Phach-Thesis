@@ -218,9 +218,9 @@ public class HostArray {
 
     public static synchronized boolean OutgoingHostsisLive(IPAddress ip) {
 //        try {
-            System.out.println("IP to compare : " + ip.toString());
+//            System.out.println("IP to compare : " + ip.toString());
             for (int i = 0; i < OutgoingHosts.length; i++) {
-                System.out.println("ip in hosts : " + OutgoingHosts[i].getIPAddress().toString());
+//                System.out.println("ip in hosts : " + OutgoingHosts[i].getIPAddress().toString());
                 if (ip.equals(OutgoingHosts[i].getIPAddress())) {
                     return true;
                 }
