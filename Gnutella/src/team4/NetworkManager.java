@@ -11,10 +11,10 @@ public class NetworkManager {
 
     public static void writeToOne(IPAddress ip, Packet packet) {
         if (HostArray.OutgoingHostsisLive(ip.toString())) {
-            System.out.println("write to one : 1");
+//            System.out.println("write to one : 1");
             Connection connection = HostArray.OutgoingHostsgetConnection(ip.toString());
             try {
-                System.out.println("write to one : 2");
+//                System.out.println("write to one : 2");
                 connection.getByteWriter().write(packet.contents(), 0, packet.totalLength());
                 connection.getByteWriter().flush();
             } catch (IOException e) {
@@ -24,7 +24,7 @@ public class NetworkManager {
                     connection.getSocket().close();
                     HostArray.OutgoingHostsremoveConnection(ip);
                 } catch (IOException exception) {
-                    System.out.println("write to one :52");
+                    System.out.println("write to one :5");
                     System.err.println(exception);
                 }
             }

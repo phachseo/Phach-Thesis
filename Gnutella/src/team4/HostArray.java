@@ -189,7 +189,7 @@ public class HostArray {
         Connection c = null;
         for (int i = 0; i < OutgoingHosts.length; i++) {
             if (ip.equals(OutgoingHosts[i].getIPAddress())) {
-                System.out.println("Host array : bingo 1");
+//                System.out.println("Host array : bingo 1");
                 c = OutgoingHosts[i];
             }
         }
@@ -200,7 +200,7 @@ public class HostArray {
         Connection c = null;
         for (int i = 0; i < OutgoingHosts.length; i++) {
             if (ip.equals(OutgoingHosts[i].getIPAddress().toString())) {
-                System.out.println("Host array : bingo 2");
+//                System.out.println("Host array : bingo 2");
                 c = OutgoingHosts[i];
             }
         }
@@ -230,9 +230,9 @@ public class HostArray {
 
     public static synchronized boolean OutgoingHostsisLive(IPAddress ip) {
 //        try {
-            System.out.println("IP to compare : " + ip.toString());
+//            System.out.println("IP to compare : " + ip.toString());
             for (int i = 0; i < OutgoingHosts.length; i++) {
-                System.out.println("ip in hosts : " + OutgoingHosts[i].getIPAddress().toString());
+//                System.out.println("ip in hosts : " + OutgoingHosts[i].getIPAddress().toString());
                 if (ip.equals(OutgoingHosts[i].getIPAddress())) {
                     return true;
                 }
