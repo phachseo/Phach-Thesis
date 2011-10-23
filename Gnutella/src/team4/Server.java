@@ -103,7 +103,7 @@ public class Server extends Thread {
                 }
                 if (header.identify() == Packet.FORMGROUP_REQUEST) {
 
-                     
+
                     Formgroup form = new Formgroup(newpacket);
 
                     form.decrementTtl();
@@ -124,7 +124,7 @@ public class Server extends Thread {
                         Formgrouphandler handler = new Formgrouphandler(mine, form);
                         handler.server = this;
                         handler.start();
-                        System.out.println("khoi dong thread phan hoi");
+
                     }
                     continue;
                 }
@@ -137,7 +137,7 @@ public class Server extends Thread {
                     ResponseHandler handler = new ResponseHandler(mine, res);
 
                     handler.start();
-
+                    System.out.println("khoi dong thread phan hoi");
                     //  Pinger.formgroup(res);
                     continue;
                 }
