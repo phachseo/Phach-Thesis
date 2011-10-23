@@ -62,10 +62,10 @@ public class Formgrouphandler extends Thread {
             // System.out.println("port 2 la:" + formgroup.getPort());
             //   l.add(new ID(a));
             server.add(a);
-            System.out.println(" a la`:" + a);
+          //  System.out.println(" a la`:" + a);
             int d = 0;
             // System.out.println("ID 3 la:" + server.idList.get(0));
-            System.out.println("Size cua tui la:" + server.idList.size());
+          //  System.out.println("Size cua tui la:" + server.idList.size());
 
             temp = Mine.getPort() + server.idList.size();
 
@@ -75,14 +75,15 @@ public class Formgrouphandler extends Thread {
 
                 if (formgroup.getID() == b) {
 
-                    System.out.println(" port cua tui la:" + temp);
+                   // System.out.println(" port cua tui la:" + temp);
                     Response r = new Response(true, temp, Mine.getIPAddress(), a);
                     // System.out.println("port 3 la:" +port);
                     NetworkManager.writeToOne(formgroup.getIP(), r);
-                    System.out.println("goi goi tin ve");
+                    System.out.println("Dia chi IP cua goi tin nhan dc la : "+formgroup.getIP);
+                    //System.out.println("goi goi tin ve");
                     MRListener mrlistent = new MRListener(temp);
                     mrlistent.start();
-                    System.out.println(" mo? port ben server" + temp);
+                  //  System.out.println(" mo? port ben server" + temp);
                     //  port++;
                 }
                 //   break;

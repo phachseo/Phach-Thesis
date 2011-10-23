@@ -25,8 +25,8 @@ public class MRerServer extends Thread {
     static int groupID;
     // public static String FILE_NAME = "C:\\read\\task1.docx";
     //  public static String SAVEMR = "C:\\temp1";
-    public static String FILE_NAME = "C:\\read\\4.txt";
-    public static String FILE_NAME2 = "C:\\read\\2.txt";
+    public static String FILE_NAME = "read/4.txt";
+    public static String FILE_NAME2 = "read/2.txt";
     public static String SAVEMR = "C:\\temp1";
     public static Integer count = new Integer(0);
     public static Integer count2 = new Integer(0);
