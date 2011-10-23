@@ -57,15 +57,15 @@ public class Listener extends Thread {
                     connection.getByteWriter().write(ready, 0, ready.length);
                     connection.getByteWriter().flush();
 
-//                    if (!HostArray.isLive(connection)) {
+                    if (!HostArray.IncomingHostsisLive(connection)) {
                         Server server = new Server(connection);
                         server.start();
                         HostArray.IncomingHostsaddConnection(connection);
                         HostCache.addConnection(connection);
-//                    }
-//                    else {
-//                        JOptionPane.showMessageDialog(null, "LISTENER - ip : " + connection.getIPAddress().toString() + " da co trong HostArray");
-//                    }
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "LISTENER - ip : " + connection.getIPAddress().toString() + " da co trong HostArray");
+                    }
                 }
 
             }

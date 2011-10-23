@@ -103,7 +103,7 @@ public class Server extends Thread {
                 }
                 if (header.identify() == Packet.FORMGROUP_REQUEST) {
 
-                    // System.out.println("tao la tao 1");
+                     System.out.println("Nhan dc phan hoi");
                     Formgroup form = new Formgroup(newpacket);
 
                     form.decrementTtl();
@@ -124,6 +124,7 @@ public class Server extends Thread {
                         Formgrouphandler handler = new Formgrouphandler(mine, form);
                         handler.server = this;
                         handler.start();
+                        System.out.println("khoi dong thread phan hoi");
                     }
                     continue;
                 }

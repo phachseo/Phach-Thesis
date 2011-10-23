@@ -13,14 +13,14 @@ public class PeriodicConnector extends Thread {
 
     public void run() {
         while (true) {
-            if ((HostArray.IncomingHostsgetCount() > 5) || !execute) {
+            if ((HostArray.OutgoingHostgetCount() > 5) || !execute) {
                 continue;
             }
 
             for (int i = 0; i < HostCache.getCount(); i++) {
                 String ipString = HostCache.getIP(i);
                 System.out.println("Hostcache la :" + ipString);
-                if (!(HostArray.IncomingHostsisLive(ipString))) {
+                if (!(HostArray.OutgoingHostsisLive(ipString))) {
                     HostCache.connectHost(i);
                 }
 

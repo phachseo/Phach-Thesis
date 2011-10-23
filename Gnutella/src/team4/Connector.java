@@ -45,12 +45,12 @@ public class Connector extends Thread {
             if (incoming == null || incoming.indexOf(READY) == -1) {
                 return;
             } else {
-//                if (!HostArray.isLive(connection)) {
+//                if (!HostArray.OutgoingHostsisLive(connection)) {
                     System.out.println("Connect to : " + connection.getIPAddress().toString());
                     Host h = new Host(connection.getIPAddress().toString(), connection.getIPAddress().getPort());
 
                     HostCache.addHost(h);
-                    HostArray.IncomingHostsaddConnection(connection);
+                    HostArray.OutgoingHostaddConnection(connection);
                     
                     Server server = new Server(connection);
                     server.start();

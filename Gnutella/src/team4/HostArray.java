@@ -102,7 +102,7 @@ public class HostArray {
     }
 
     public static synchronized boolean IncomingHostsisLive(IPAddress ip) {
-//        try {
+        try {
             System.out.println("IP to compare : " + ip.toString());
             for (int i = 0; i < IncomingHosts.length; i++) {
                 System.out.println("ip in hosts : " + IncomingHosts[i].getIPAddress().toString());
@@ -111,10 +111,10 @@ public class HostArray {
                 }
             }
             return false;
-//        } catch (NullPointerException exception) {
-//            System.out.println("Null pointer error in HostArray");
-//            return false;
-//        }
+        } catch (NullPointerException exception) {
+            System.out.println("Null pointer error in HostArray");
+            return false;
+        }
     }
 
 
@@ -158,7 +158,7 @@ public class HostArray {
     }
 
     public static synchronized void OutgoingHostsremoveConnection(Connection c) {
-        IncomingHostsremoveConnection(c.getIPAddress());
+        OutgoingHostsremoveConnection(c.getIPAddress());
     }
 
     public static synchronized void OutgoingHostsremoveConnection(IPAddress ip) {
