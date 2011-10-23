@@ -132,7 +132,7 @@ public class HostArray {
         }
     }
 
-    public static synchronized int OutgoingHostgetCount() {
+    public static synchronized int OutgoingHostsgetCount() {
         if (OutgoingHostisNull()) {
             return 0;
         } else {
@@ -178,7 +178,7 @@ public class HostArray {
     }
 
     public static synchronized Connection OutgoingHostsgetConnection(int i) {
-        if ((!OutgoingHostisNull() && (i < OutgoingHostgetCount()))) {
+        if ((!OutgoingHostisNull() && (i < OutgoingHostsgetCount()))) {
             return OutgoingHosts[i];
         } else {
             return null;

@@ -61,6 +61,7 @@ public class Connector extends Thread {
             }
         } catch (Exception e) {
             System.out.println("Connection failed.");
+            NetworkManager.notify(connection.getIPAddress());
         }
     }
 }
