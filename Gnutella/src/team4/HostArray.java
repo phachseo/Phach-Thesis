@@ -209,6 +209,8 @@ public class HostArray {
 
     public static synchronized boolean OutgoingHostsisLive(String ipString) {
         if (!OutgoingHostisNull()) {
+
+            System.out.println("OUT GOING HOSTLENGHT LA : "+ OutgoingHosts.length);
             for (int i = 0; i < OutgoingHosts.length; i++) {
                 InetAddress inet = OutgoingHosts[i].getSocket().getInetAddress();
                 if ((ipString.equals(inet.getHostName())) || (ipString.equals(inet.getHostAddress()))) {
