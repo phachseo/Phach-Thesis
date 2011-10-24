@@ -96,6 +96,7 @@ public class Server extends Thread {
                         String pingIPString = ping.getIP().toString();
                         int pingPort = ping.getPort();
                         if(!HostArray.OutgoingHostsisLive(pingIPString)){
+                        System.out.println("===== CHAY VAO DC VONG IF =====");
                         HostCache.connectHost(pingIPString,pingPort);
 
                         }
