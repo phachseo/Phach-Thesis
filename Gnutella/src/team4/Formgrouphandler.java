@@ -24,7 +24,7 @@ public class Formgrouphandler extends Thread {
 
     public Formgrouphandler(IPAddress IP, Formgroup formgroup) {
         this.formgroup = formgroup;
-        formgroup.setIP(IP);  //set formgroup's IP Address
+        //formgroup.setIP(IP);  //set formgroup's IP Address
 
     }
     public static Arrays[] phach;
