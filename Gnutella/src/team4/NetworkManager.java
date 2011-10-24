@@ -52,7 +52,7 @@ public class NetworkManager {
     public static void writeButOne(IPAddress ip, Packet packet) {
         for (int i = 0; i < HostArray.OutgoingHostsgetCount(); i++) {
             Connection c = HostArray.OutgoingHostsgetConnection(i);
-            if (!(c.compareConnections(ip))) {
+            if (!(c.compareConnections(ip.toString()))) {
                 try {
                     c.getByteWriter().write(packet.contents(), 0, packet.totalLength());
                     c.getByteWriter().flush();

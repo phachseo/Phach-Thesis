@@ -120,5 +120,12 @@ public class Connection
     if (ip.equals(this.getIPAddress())) return true;
     else return false;
   }
+
+  public boolean compareConnections(String ip)
+  {
+    if (ip.equals(this.getIPAddress().toString())) return true;
+    else return false;
+  }
+
 }
 
