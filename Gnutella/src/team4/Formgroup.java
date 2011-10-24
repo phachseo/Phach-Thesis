@@ -43,13 +43,13 @@ private IPAddress ip;
 	// convert ip address to 4 bytes; need to check format of ip
 	// address -- Little Endian????
         
-	contents[index + 6] = (byte)(IP.getFirst() & 0xff);
+	contents[index + 6] = (byte)(IP.getFirst());
         //System.out.println("6:"+ contents[index +6]);
-	contents[index + 7] = (byte)((IP.getSecond() & 0xffff) >>> 8);
+	contents[index + 7] = (byte)(IP.getSecond());
          //System.out.println("7:"+ contents[index +7]);
-	contents[index + 8] = (byte)((IP.getThird() & 0xffffff) >>> 16);
+	contents[index + 8] = (byte)(IP.getThird());
          //System.out.println("6:"+ contents[index +8]);
-	contents[index + 9] = (byte)(IP.getFourth() >>> 24);
+	contents[index + 9] = (byte)(IP.getFourth());
         //System.out.println("9:"+ contents[index +9]);
 
 
@@ -64,11 +64,13 @@ private IPAddress ip;
 public IPAddress getIP()
     {
         IPAddress IP;
+
+
           //IP = (((contents[index + 3] & 0xff) << 24) | ((contents[index + 2] & 0xff) << 16) | ((contents[index + 1] & 0xff) << 8) | (contents[index + 0] & 0xff));
-        int ip1 = contents[index + 6];
-        int ip2 = contents[index + 7];
-        int ip3 = contents[index + 8];
-        int ip4 = contents[index + 9];
+        int ip1 = 0x00000000 | contents[index + 6];
+        int ip2 = 0x00000000 | contents[index + 7];
+        int ip3 = 0x00000000 | contents[index + 8];
+        int ip4 = 0x00000000 | contents[index + 9];
         int port = (((contents[index + 4] & 0xff) << 8) | (contents[index + 5] & 0xff));
         IPAddress newIP = new IPAddress(ip1, ip2, ip3, ip4, port);
        
