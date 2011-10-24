@@ -78,7 +78,7 @@ public class Server extends Thread {
                 {
                     Ping ping = new Ping(newpacket);
                     //   System.out.println("1");
-
+                    System.out.println("dia chi? ping toi' la` :"+ ping.getIP().toString());
                     boolean isPacketContainedInHashtable = false;
                     Enumeration e = Searcher.pingtable.keys();
                     while (e.hasMoreElements()) {
@@ -90,7 +90,7 @@ public class Server extends Thread {
                     }
                     if (!isPacketContainedInHashtable) {
                         Searcher.pingtable.put((Packet) ping, ping);
-                        PingHandler handler = new PingHandler(mine, ping);
+                        PingHandler handler = new PingHandler(ping.getIP(), ping);
                         //  handler.server = this;
                         handler.start();
                     }
@@ -102,17 +102,10 @@ public class Server extends Thread {
 //                    continue;
                 }
                 if (header.identify() == Packet.FORMGROUP_REQUEST) {
-                System.out.println("Dia chi Mine la : "+ mine);
+           //     System.out.println("Dia chi Mine la : "+ mine);
                     Formgroup form = new Formgroup(newpacket);
-
-                    System.out.println("IP thu 1 :"+ newpacket[23+6]);
-
-                    System.out.println("IP thu 2 :"+ newpacket[23+7]);
-                    System.out.println("IP thu 3 :"+ newpacket[23+8]);
-                    System.out.println("IP thu 4 :"+ newpacket[23+9]);
-
-                                                       
-                    System.out.println("dia chi nhan dc la : "+ form.getIP().toString());
+                                                                           
+                  //  System.out.println("dia chi nhan dc la : "+ form.getIP().toString());
                     form.decrementTtl();
                     form.incrementHops();
 
@@ -137,13 +130,13 @@ public class Server extends Thread {
                 }
                 if (header.identify() == Packet.RESPONSE) {
                     //  System.out.println("phachseo1");
-                    System.out.println("Nhan dc phan hoi");
+                   // System.out.println("Nhan dc phan hoi");
                     Response res = new Response(newpacket);
 
                     ResponseHandler handler = new ResponseHandler(mine, res);                    
                     handler.start();
                     
-                    System.out.println("khoi dong thread phan hoi");
+                  //  System.out.println("khoi dong thread phan hoi");
 
                     //  Pinger.formgroup(res);
                     continue;

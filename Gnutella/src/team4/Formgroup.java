@@ -63,15 +63,14 @@ private IPAddress ip;
     }
 public IPAddress getIP()
     {
-        IPAddress IP;
-
+       
 
           //IP = (((contents[index + 3] & 0xff) << 24) | ((contents[index + 2] & 0xff) << 16) | ((contents[index + 1] & 0xff) << 8) | (contents[index + 0] & 0xff));
-        System.out.printf("ip1 : 0x%02x\n",contents[index + 6]);
+//        System.out.printf("ip1 : 0x%02x\n",contents[index + 6]);
         int ip1 = (0x000000ff & contents[index + 6]) ;
 //        System.out.printf("ip1 : 0x%02x\n", ip1);
 
-        System.out.printf("ip2 : 0x%02x\n", contents[index + 7]);
+//        System.out.printf("ip2 : 0x%02x\n", contents[index + 7]);
         int ip2 = (0x000000ff & contents[index + 7]);
 //        System.out.printf("ip2 : 0x%02x\n", ip2);
 
