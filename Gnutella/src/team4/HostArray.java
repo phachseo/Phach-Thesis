@@ -189,6 +189,18 @@ public class HostArray {
         Connection c = null;
         for (int i = 0; i < OutgoingHosts.length; i++) {
             if (ip.equals(OutgoingHosts[i].getIPAddress())) {
+                System.out.println("Host array : bingo 1");
+                c = OutgoingHosts[i];
+            }
+        }
+        return c;
+    }
+
+    public static synchronized Connection OutgoingHostsgetConnection(String ip) {
+        Connection c = null;
+        for (int i = 0; i < OutgoingHosts.length; i++) {
+            if (ip.equals(OutgoingHosts[i].getIPAddress().toString())) {
+                System.out.println("Host array : bingo 2");
                 c = OutgoingHosts[i];
             }
         }
