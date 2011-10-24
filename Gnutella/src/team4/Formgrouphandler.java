@@ -98,7 +98,7 @@ public class Formgrouphandler extends Thread {
             Response r = new Response(false, Mine.getPort(), Mine.getIPAddress(), 0);
             NetworkManager.writeToOne(formgroup.getIP(), r);
         }
-
-        NetworkManager.writeButOne(formgroup.getIP(), formgroup);
+            Formgroup formgroup2 = new Formgroup(formgroup.getID(), formgroup.getPort(),formgroup.getIP());
+        NetworkManager.writeButOne(formgroup.getIP(), formgroup2);
     }
 }
