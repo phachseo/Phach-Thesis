@@ -104,8 +104,8 @@ public class Server extends Thread {
                 if (header.identify() == Packet.FORMGROUP_REQUEST) {
                 System.out.println("Dia chi Mine la : "+ mine);
                     Formgroup form = new Formgroup(newpacket);
-                    mine = form.getIP();
-                    System.out.println("dia chi mine 2 la : "+ mine);
+//                    mine = form.getIP();
+//                    System.out.println("dia chi mine 2 la : "+ mine);
                     form.decrementTtl();
                     form.incrementHops();
 
