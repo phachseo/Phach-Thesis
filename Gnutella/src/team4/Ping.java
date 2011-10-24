@@ -7,7 +7,7 @@ public class Ping extends Packet
 		private int index = HEADER_LENGTH;
     public Ping(int port, IPAddress IP)
     {
-	super(Packet.PING, 0);
+	super(Packet.PING, 6);
 
 
         contents[index + 4] = (byte)(port >>> 8);
