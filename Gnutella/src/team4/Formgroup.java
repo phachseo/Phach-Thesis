@@ -43,13 +43,13 @@ private IPAddress ip;
 	// convert ip address to 4 bytes; need to check format of ip
 	// address -- Little Endian????
         
-	contents[index + 6] = (byte)IP.getFirst();
+	contents[index + 6] = (byte)(IP.getFirst() & 0xff);
         //System.out.println("6:"+ contents[index +6]);
-	contents[index + 7] = (byte)IP.getSecond();
+	contents[index + 7] = (byte)((IP.getSecond() & 0xffff) >>> 8);
          //System.out.println("7:"+ contents[index +7]);
-	contents[index + 8] = (byte)IP.getThird();
+	contents[index + 8] = (byte)((IP.getThird() & 0xffffff) >>> 16);
          //System.out.println("6:"+ contents[index +8]);
-	contents[index + 9] = (byte)IP.getFourth();
+	contents[index + 9] = (byte)(IP.getFourth() >>> 24);
         //System.out.println("9:"+ contents[index +9]);
 
 
