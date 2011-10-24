@@ -12,7 +12,7 @@ public class NetworkManager {
     public static void writeToOne(IPAddress ip, Packet packet) {
         if (HostArray.OutgoingHostsisLive(ip.toString())) {
             System.out.println("write to one : 1");
-            Connection connection = HostArray.OutgoingHostsgetConnection(ip);
+            Connection connection = HostArray.OutgoingHostsgetConnection(ip.toString());
             try {
                 System.out.println("write to one : 2");
                 connection.getByteWriter().write(packet.contents(), 0, packet.totalLength());
