@@ -67,11 +67,7 @@ public class Formgrouphandler extends Thread {
             // System.out.println("ID 3 la:" + server.idList.get(0));
             System.out.println("Size cua tui la:" + server.idList.size());
 
-            for (int j = 0; j < server.idList.size(); j++) {
-                temp = Mine.getPort() + server.idList.size();
-
-            }
-
+            temp = Mine.getPort() + server.idList.size();
 
             for (int i = 0; i < server.idList.size(); i++) {
                 int b = server.idList.get(i);
@@ -79,7 +75,7 @@ public class Formgrouphandler extends Thread {
 
                 if (formgroup.getID() == b) {
 
-                    //System.out.println(" port cua tui la:" + temp);
+                    System.out.println(" port cua tui la:" + temp);
                     Response r = new Response(true, temp, Mine.getIPAddress(), a);
                     // System.out.println("port 3 la:" +port);
                     NetworkManager.writeToOne(formgroup.getIP(), r);
