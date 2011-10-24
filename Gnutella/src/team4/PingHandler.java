@@ -21,7 +21,7 @@ class PingHandler extends Thread {
 //	    {
 //       if(!Searcher.pingtable.containsKey(ping.getMessageID())){
 //            Searcher.pingtable.put(ping.getMessageID(), 1);
-            System.out.println(" dia chi ping cua goi tin la : "+ ping.getIP());
+           // System.out.println(" dia chi ping cua goi tin la : "+ ping.getIP());
             NetworkManager.writeButOne(ping.getIP(), ping);
             //pt.put((Packet) ping, ping);
             //    System.out.println("so luong file 1:"+ SharedDirectory.getOurNumFiles());
