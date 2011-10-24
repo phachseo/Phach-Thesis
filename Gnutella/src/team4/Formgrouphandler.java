@@ -42,7 +42,7 @@ public class Formgrouphandler extends Thread {
 //            Searcher.HashtableID.put(formgroup.getMessageID(), "aaa");
 ////            hashtablepro.out(Searcher.HashtableID);
         System.out.println("chay vao formgroup handler");
-         System.out.println("Dia chi IP cua goi tin nhan dc la : "+formgroup.getIP());
+         
         int n = JOptionPane.showConfirmDialog(
                 null,
                 "Would you like to join the MapReduce Group ?",
@@ -98,7 +98,7 @@ public class Formgrouphandler extends Thread {
             Response r = new Response(false, Mine.getPort(), Mine.getIPAddress(), 0);
             NetworkManager.writeToOne(formgroup.getIP(), r);
         }
-            Formgroup formgroup2 = new Formgroup(formgroup.getID(), formgroup.getPort(),formgroup.getIP());
-        NetworkManager.writeButOne(formgroup.getIP(), formgroup2);
+//            Formgroup formgroup2 = new Formgroup(formgroup.getID(), formgroup.getPort(),formgroup.getIP());
+        NetworkManager.writeButOne(formgroup.getIP(), formgroup);
     }
 }
