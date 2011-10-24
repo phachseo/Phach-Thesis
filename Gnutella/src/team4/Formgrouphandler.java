@@ -22,8 +22,8 @@ public class Formgrouphandler extends Thread {
     // Server parent;
     // Preferences parent;
 
-    public Formgrouphandler(IPAddress IP, Formgroup fg) {
-        this.formgroup = fg;
+    public Formgrouphandler(IPAddress IP, Formgroup formgroup) {
+        this.formgroup = formgroup;
         formgroup.setIP(IP);  //set formgroup's IP Address
 
     }
@@ -42,7 +42,7 @@ public class Formgrouphandler extends Thread {
 //            Searcher.HashtableID.put(formgroup.getMessageID(), "aaa");
 ////            hashtablepro.out(Searcher.HashtableID);
         System.out.println("chay vao formgroup handler");
-        System.out.println("Dia chi IP cua goi tin nhan dc la : "+formgroup.getIP());
+         System.out.println("Dia chi IP cua goi tin nhan dc la : "+formgroup.getIP());
         int n = JOptionPane.showConfirmDialog(
                 null,
                 "Would you like to join the MapReduce Group ?",

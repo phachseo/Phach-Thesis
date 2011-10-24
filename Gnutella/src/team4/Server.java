@@ -102,8 +102,7 @@ public class Server extends Thread {
 //                    continue;
                 }
                 if (header.identify() == Packet.FORMGROUP_REQUEST) {
-
-                     
+                System.out.println("Dia chi Mine la : "+ mine);
                     Formgroup form = new Formgroup(newpacket);
                  //   System.out.println("dia chi goi tin 0 nhan dc la : "+ form.getIP());
                     form.decrementTtl();
