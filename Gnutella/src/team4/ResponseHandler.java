@@ -40,11 +40,12 @@ public class ResponseHandler extends Thread {
             // Groupcach = new
             Groupcache.addHosttoGroup(newhost);
             
-            for(int j=0;j< Groupcache.getCount();j++)
-            {
+//            for(int j=0;j< Groupcache.getCount();j++)
+//            {
                 temp=Mine.getPort()+ Groupcache.getCount();
 
-            }
+//            }
+                System.out.println("response handler : port = " + temp);
                 MRListener mrlisten = new MRListener(temp);
             mrlisten.start();
 
