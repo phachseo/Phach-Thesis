@@ -46,15 +46,15 @@ class PongHandler extends Thread
 	Host newhost = new Host(ipname, port);
 	HostCache.addHost(newhost);
 
-	if (PingHandler.pt.containsKey(pong))
-	    {
-		pingMatch = (Ping) PingHandler.pt.get((Packet) pong); /**Matching pong is used as key to obtain original ping.*/
-		pingIP = pingMatch.getIP();
-
-
-
-                NetworkManager.writeToOne (pingIP, pong);
-	    }
+//	if (PingHandler.pt.containsKey(pong))
+//	    {
+//		pingMatch = (Ping) PingHandler.pt.get((Packet) pong); /**Matching pong is used as key to obtain original ping.*/
+//		pingIP = pingMatch.getIP();
+//
+//
+//
+//                NetworkManager.writeToOne (pingIP, pong);
+//	    }
     }
     //}
 //}
