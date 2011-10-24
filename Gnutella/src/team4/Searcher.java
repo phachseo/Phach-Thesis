@@ -511,7 +511,7 @@ class SearchPanel extends JPanel {
         //  groupTable.setValueAt(groupTable, 0, 0);
         //  groupTable.setValueAt(new Integer(id), 0, 0);
         int count = groupTable.getRowCount();
-        for (int i = 0; i < count; i++) {
+        for (int i = 1; i < count; i++) {
              Object groupID = groupTable.getValueAt(i, 0);
              if (Integer.parseInt(groupID.toString()) == id ) {
                  return;
