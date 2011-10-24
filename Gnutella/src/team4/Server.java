@@ -105,7 +105,7 @@ public class Server extends Thread {
 
                      
                     Formgroup form = new Formgroup(newpacket);
-
+                    System.out.println("dia chi goi tin 0 nhan dc la : "+ form.getIP());
                     form.decrementTtl();
                     form.incrementHops();
 
