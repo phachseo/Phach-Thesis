@@ -510,11 +510,16 @@ class SearchPanel extends JPanel {
     public static void updatestatgroup(int id) {
         //  groupTable.setValueAt(groupTable, 0, 0);
         //  groupTable.setValueAt(new Integer(id), 0, 0);
+        int count = groupTable.getRowCount();
+        for (int i = 0; i < count; i++) {
+             Object groupID = groupTable.getValueAt(i, 0);
+             if (Integer.parseInt(groupID.toString()) == id ) {
+                 return;
+             }
+        }
+        
         Object[] newRow = new Object[1];
         newRow[0] = id;
-//        newRow[1] = name;
-//        newRow[2] = "Connecting...";
-//        newRow[3] = "0% Complete";
         groupTable.addRow(newRow);
     }
 
