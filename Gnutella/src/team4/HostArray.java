@@ -141,14 +141,14 @@ public class HostArray {
     }
 
     public static synchronized void OutgoingHostaddConnection(Connection c) {
-        System.out.println("phachseo 111111111111");
+      //  System.out.println("phachseo 111111111111");
         if (OutgoingHostisNull()) {
-            System.out.println("phachseo 2222222222222");
+            //System.out.println("phachseo 2222222222222");
             OutgoingHosts = new Connection[1];
            OutgoingHosts[0] = c;
             Searcher.updateAddedConnection(c);
         } else if (!OutgoingHostsisLive(c)) {
-            System.out.println("phachseo 33333333333333");
+           // System.out.println("phachseo 33333333333333");
             Connection[] temp = new Connection[OutgoingHosts.length + 1];
             System.arraycopy(OutgoingHosts, 0, temp, 0, OutgoingHosts.length);
             temp[OutgoingHosts.length] = c;
@@ -210,7 +210,7 @@ public class HostArray {
     public static synchronized boolean OutgoingHostsisLive(String ipString) {
         if (!OutgoingHostisNull()) {
 
-            System.out.println("OUT GOING HOSTLENGHT LA : "+ OutgoingHosts.length);
+           // System.out.println("OUT GOING HOSTLENGHT LA : "+ OutgoingHosts.length);
             for (int i = 0; i < OutgoingHosts.length; i++) {
                 InetAddress inet = OutgoingHosts[i].getSocket().getInetAddress();
                 if ((ipString.equals(inet.getHostName())) || (ipString.equals(inet.getHostAddress()))) {
