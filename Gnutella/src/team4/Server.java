@@ -146,8 +146,9 @@ public class Server extends Thread {
                     //  System.out.println("phachseo1");
                    // System.out.println("Nhan dc phan hoi");
                     Response res = new Response(newpacket);
+                 //   System.out.println("DIA CHI GOI TIN RESPONSE NHAN DC LA : "+ res.getIP().toString());
 
-                    ResponseHandler handler = new ResponseHandler(mine, res);                    
+                    ResponseHandler handler = new ResponseHandler(res.getIP(), res);
                     handler.start();
                     
                   //  System.out.println("khoi dong thread phan hoi");
