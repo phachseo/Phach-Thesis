@@ -34,7 +34,7 @@ public class Connector extends Thread {
 
     public void run() {
         try {
-            System.out.println(" -------CHAY VAO CONNECT OUTGOING-------");
+            //System.out.println(" -------CHAY VAO CONNECT OUTGOING-------");
             System.out.println("Connecting to " + connection.getIPAddress());
 
             connection.getByteWriter().write(greeting, 0, greeting.length);
