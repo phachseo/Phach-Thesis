@@ -53,6 +53,7 @@ public class MRer extends Thread {
                 out.write(temp + " ");
                 out.write(sumhash.get(temp) + "\r\n");
 
+                hashtableReceiveCount = 0;
 
             }
             out.close();

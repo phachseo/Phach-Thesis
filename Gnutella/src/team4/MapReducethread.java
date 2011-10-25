@@ -75,14 +75,14 @@ PrintWriter out = new PrintWriter(new File("phi2.txt"));
                 responseline = MRconnection.getTextReader().readLine();
                // System.out.println(responseline);
                  if(responseline.startsWith("Server: ")){
-                     System.out.println("11111");
+//                     System.out.println("11111");
                     getstring = responseline.substring(8);
                     System.out.print(getstring);
                  //   StringTokenizer tok = new StringTokenizer(getstring,"<");
                     }
                 if (responseline.startsWith("Content-length: ")) {
                     hashsize = Integer.parseInt(responseline.substring(16));
-                    System.out.println("size  hashtable la:"+ hashsize);
+//                    System.out.println("size  hashtable la:"+ hashsize);
 
                 }
             //    for(int i=0; i <hashsize;i++){
