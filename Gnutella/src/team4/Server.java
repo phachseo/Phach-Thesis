@@ -104,8 +104,15 @@ public class Server extends Thread {
                 if (header.identify() == Packet.FORMGROUP_REQUEST) {
                 System.out.println("Dia chi Mine la : "+ mine);
                     Formgroup form = new Formgroup(newpacket);
-                    mine = form.getIP();
-                    System.out.println("dia chi mine 2 la : "+ mine);
+
+                    System.out.println("IP thu 1 :"+ newpacket[23+6]);
+
+                    System.out.println("IP thu 2 :"+ newpacket[23+7]);
+                    System.out.println("IP thu 3 :"+ newpacket[23+8]);
+                    System.out.println("IP thu 4 :"+ newpacket[23+9]);
+
+                                                       
+                    System.out.println("dia chi nhan dc la : "+ form.getIP().toString());
                     form.decrementTtl();
                     form.incrementHops();
 
@@ -121,7 +128,7 @@ public class Server extends Thread {
                     }
                     if (!isPacketContainedInHashtable) {
                         Searcher.HashtableID.put((Packet) form, form);
-                        Formgrouphandler handler = new Formgrouphandler(mine, form);
+                        Formgrouphandler handler = new Formgrouphandler(form.getIP(), form);
                         handler.server = this;
                         handler.start();
                         
