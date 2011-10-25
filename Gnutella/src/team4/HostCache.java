@@ -99,6 +99,18 @@ public class HostCache {
             Connector connector = new Connector(getIP(i), getPort(i), 20000);
             connector.start();
         }
+
+
+    }
+
+      public static void connectHost(String ip,int port) {
+        if (!isNull()) {
+            System.out.println("Attempting to connect to " + ip + ":" + port);
+            Connector connector = new Connector(ip, port, 20000);
+            connector.start();
+        }
+
+
     }
 }
 

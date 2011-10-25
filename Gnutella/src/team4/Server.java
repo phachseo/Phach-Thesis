@@ -90,6 +90,18 @@ public class Server extends Thread {
                     }
                     if (!isPacketContainedInHashtable) {
                         Searcher.pingtable.put((Packet) ping, ping);
+                        
+                        
+                        
+                        String pingIPString = ping.getIP().toString();
+                        int pingPort = ping.getPort();
+                        if(!HostArray.OutgoingHostsisLive(pingIPString)){
+                        HostCache.connectHost(pingIPString,pingPort);
+
+                        }
+
+
+
                         PingHandler handler = new PingHandler(ping.getIP(), ping);
                         //  handler.server = this;
                         handler.start();
