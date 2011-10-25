@@ -22,7 +22,7 @@ public class Pinger extends Thread {
 //            System.out.println("Host Array La :" + HostArray.IncomingHostsgetCount());
 //              Searcher.updateGroupInfo(groupid);
 
-            myping = new Ping();
+            myping = new Ping(Mine.getPort(),Mine.getIPAddress());
             //  System.out.println("messageid cua goi ping la :"+ myping.getMessageID());
             Searcher.pingtable.put((Packet) myping, myping);
             hosts = 0;
