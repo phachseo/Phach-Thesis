@@ -103,11 +103,11 @@ public class Server extends Thread {
                         System.out.println("===== CHAY VAO DC VONG IF =====");
                         HostCache.connectHost(pingIPString,pingPort);
                          
-                          try {
-                    sleep(Preferences.CONNECTOR_TIME);
-                } catch (Exception ev) {
-                    System.out.println(ev.getMessage());
-                }
+//                          try {
+//                    sleep(Preferences.CONNECTOR_TIME);
+//                } catch (Exception ev) {
+//                    System.out.println(ev.getMessage());
+//                }
 
                         }
 
