@@ -95,22 +95,13 @@ public class Server extends Thread {
                         
                         String pingIPString = ping.getIP().toString();
                         int pingPort = ping.getPort();
-                   
-                        
-                        
-                        //     System.out.println(" IP va Port cua Ping chay toi' la : "+ pingIPString+"   "+pingPort);
-                        if(!HostArray.OutgoingHostsisLive(pingIPString)){
-                        System.out.println("===== CHAY VAO DC VONG IF =====");
-                        HostCache.connectHost(pingIPString,pingPort);
-                         
-//                          try {
-//                    sleep(Preferences.CONNECTOR_TIME);
-//                } catch (Exception ev) {
-//                    System.out.println(ev.getMessage());
-//                }
+                        Host h = new Host(pingIPString, pingPort);
 
+                        if(!HostCache.isPresent(h)){
+                        HostCache.addHost(h);
                         }
-
+                        
+                        
 
 
                         PingHandler handler = new PingHandler(ping.getIP(), ping);
