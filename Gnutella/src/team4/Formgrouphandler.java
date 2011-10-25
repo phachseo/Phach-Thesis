@@ -42,7 +42,7 @@ public class Formgrouphandler extends Thread {
 //            Searcher.HashtableID.put(formgroup.getMessageID(), "aaa");
 ////            hashtablepro.out(Searcher.HashtableID);
         System.out.println("chay vao formgroup handler");
-         
+              System.out.println("dia chi nhan dc thu 2 la : "+ formgroup.getIP().toString());
         int n = JOptionPane.showConfirmDialog(
                 null,
                 "Would you like to join the MapReduce Group ?",

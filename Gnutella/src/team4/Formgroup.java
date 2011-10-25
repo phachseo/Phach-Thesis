@@ -67,10 +67,23 @@ public IPAddress getIP()
 
 
           //IP = (((contents[index + 3] & 0xff) << 24) | ((contents[index + 2] & 0xff) << 16) | ((contents[index + 1] & 0xff) << 8) | (contents[index + 0] & 0xff));
-        int ip1 = 0x00000000 | contents[index + 6];
-        int ip2 = 0x00000000 | contents[index + 7];
-        int ip3 = 0x00000000 | contents[index + 8];
-        int ip4 = 0x00000000 | contents[index + 9];
+        System.out.printf("ip1 : 0x%02x\n",contents[index + 6]);
+        int ip1 = (0x000000ff & contents[index + 6]) ;
+//        System.out.printf("ip1 : 0x%02x\n", ip1);
+
+        System.out.printf("ip2 : 0x%02x\n", contents[index + 7]);
+        int ip2 = (0x000000ff & contents[index + 7]);
+//        System.out.printf("ip2 : 0x%02x\n", ip2);
+
+//        System.out.printf("ip3 : 0x%02x\n", contents[index + 8]);
+        int ip3 = (0x000000ff & contents[index + 8]);
+//        System.out.printf("ip3 : 0x%02x\n", ip3);
+        
+//        System.out.printf("ip4 : 0x%02x\n", contents[index + 9]);
+        int ip4 = (0x000000ff & contents[index + 9]);
+//        System.out.printf("ip4 : 0x%02x\n", ip4
+
+//                );
         int port = (((contents[index + 4] & 0xff) << 8) | (contents[index + 5] & 0xff));
         IPAddress newIP = new IPAddress(ip1, ip2, ip3, ip4, port);
        
