@@ -26,14 +26,14 @@ public class HostArray {
     }
 
     public static synchronized void IncomingHostsaddConnection(Connection c) {
-        System.out.println("phachseo 111111111111");
+//        System.out.println("phachseo 111111111111");
         if (IncomingHostisNull()) {
-            System.out.println("phachseo 2222222222222");
+//            System.out.println("phachseo 2222222222222");
             IncomingHosts = new Connection[1];
             IncomingHosts[0] = c;
             Searcher.updateAddedConnection(c);
         } else if (!IncomingHostsisLive(c)) {
-            System.out.println("phachseo 33333333333333");
+//            System.out.println("phachseo 33333333333333");
             Connection[] temp = new Connection[IncomingHosts.length + 1];
             System.arraycopy(IncomingHosts, 0, temp, 0, IncomingHosts.length);
             temp[IncomingHosts.length] = c;
