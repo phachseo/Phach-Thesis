@@ -177,7 +177,7 @@ public class Server extends Thread {
                     continue;
                 }
                 if (header.identify() == Packet.PONG) {
-
+                    System.out.println(" NHAN DC GOI PONG");
                     Pong pong = new Pong(newpacket);
                     Host h = new Host( pong.getIP().toString(), pong.getPort());
                     if(!HostCache.isPresent(h)){
