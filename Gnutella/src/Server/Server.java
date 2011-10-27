@@ -98,7 +98,7 @@ public class Server extends Thread {
                 {
                     Ping ping = new Ping(newpacket);
                     //   System.out.println("1");
-                    System.out.println("dia chi? ping toi' la` :"+ ping.getIP().toString());
+                   
                     boolean isPacketContainedInHashtable = false;
                     Enumeration e = Searcher.pingtable.keys();
                     while (e.hasMoreElements()) {
@@ -111,7 +111,7 @@ public class Server extends Thread {
                     if (!isPacketContainedInHashtable) {
                         Searcher.pingtable.put((Packet) ping, ping);
                         
-                        
+                         System.out.println("dia chi? ping toi' la` :"+ ping.getIP().toString());
                         
 //                        String pingIPString = ping.getIP().toString();
 //                        int pingPort = ping.getPort();
