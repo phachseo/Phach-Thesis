@@ -49,9 +49,9 @@ public class MapReducethread extends Thread {
             Connection MRconnection = new Connection(socket, Connection.MRING);
 
                 System.out.println(" cong viec goi di la :"+ work);
-            String greetstring = "GET /get/" + groupID + "/" + work +" HTTP/1.0\r\nConnection: Keep-Alive\r\\nPHACHSEO NO1\r\nRange: bytes=0-\r\n\r\n";
+            String greetstring = "GET /get/" + groupID + "/" + work +" HTTP/1.0\r\nConnection: Keep-Alive\r\nRange: bytes=0-\r\n\r\n";
             byte[] greeting = greetstring.getBytes();
-
+            System.out.println(" do dai du lieu : " + greeting.length);
             MRconnection.getByteWriter().write(greeting, 0, greeting.length);
             MRconnection.getByteWriter().flush();
             //   MRconnection.closeByteWriter();

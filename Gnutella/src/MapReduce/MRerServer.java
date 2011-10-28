@@ -42,7 +42,7 @@ public class MRerServer extends Thread {
     }
 
     public void run() {
-
+        System.out.println(" khoi dong thread MR server");
         StringTokenizer st = new StringTokenizer(incoming, "/");
         if ((st.countTokens() == 5) && (st.nextToken().equals("GET ")) && (st.nextToken().equals("get"))) {
 
