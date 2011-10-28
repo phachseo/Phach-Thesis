@@ -48,98 +48,112 @@ public class MRerServer extends Thread {
 
             groupID = Integer.parseInt(st.nextToken());
             System.out.println("so GroupID la:" + groupID);
+            String filecontent = st.nextToken();
+            if (filecontent.endsWith(" HTTP")) {
 
-            BufferedReader fileIn = null;
+                filecontent = filecontent.substring(0, (filecontent.length() - 5));
+                BufferedReader fileIn = null;
+                try {
 
-            BufferedReader fileIn2 = null;
-            try {
-
-                fileIn = new BufferedReader(new FileReader(FILE_NAME));
-                String line;
-                ArrayList array = new ArrayList<list>();
-                Hashtable hashtable = new Hashtable();
-                Hashtable hashnew = new Hashtable();
-                while ((line = fileIn.readLine()) != null) {
-                    Scanner tokenize = new Scanner(line);
-                    while (tokenize.hasNext()) {
-                        array.add(tokenize.next());
+                    fileIn = new BufferedReader(new FileReader(filecontent));
+                    String line;
+                    ArrayList array = new ArrayList<list>();
+                    Hashtable hashtable = new Hashtable();
+                    Hashtable hashnew = new Hashtable();
+                    while ((line = fileIn.readLine()) != null) {
+                        Scanner tokenize = new Scanner(line);
+                        while (tokenize.hasNext()) {
+                            array.add(tokenize.next());
+                        }
                     }
-                }
-                Iterator i = array.iterator();
-                while (i.hasNext()) {
-                    //System.out.println(i.next());
-                    String temp = (String) i.next();
-                    count = (Integer) hashtable.get(temp);
-                    if (count == null) {
-                        hashtable.put(temp, new Integer(1));
-                    } else {
-                        hashtable.put(temp, new Integer(count.intValue() + 1));
+                    Iterator i = array.iterator();
+                    while (i.hasNext()) {
+                        //System.out.println(i.next());
+                        String temp = (String) i.next();
+                        count = (Integer) hashtable.get(temp);
+                        if (count == null) {
+                            hashtable.put(temp, new Integer(1));
+                        } else {
+                            hashtable.put(temp, new Integer(count.intValue() + 1));
+                        }
                     }
+                    Enumeration e = hashtable.keys();
+                    String responsestring = "";
+                    while (e.hasMoreElements()) {
+                        String temp = (String) e.nextElement();
+                        responsestring = responsestring + "<" + temp + " " + hashnew.get(temp);
+
+                    }
+                    int size = hashnew.size();
+                    System.out.print(responsestring);
+                    String responsestring2 = ("HTTP 200 OK\r\nServer: " + responsestring + "\r\nContent-type: application/binary\r\nContent-length: " + size + "\r\n\r\n");
+                    byte[] response = responsestring2.getBytes();
+                    myconnection.getByteWriter().write(response, 0, response.length);
+                    myconnection.getByteWriter().flush();
+
+                } catch (IOException ex) {
+                    System.out.println("loiiiiiiiiiiiiiiiiiiiiiii");
                 }
+            }
+        }
+    }
+}
+//
+//
+//            BufferedReader fileIn2 = null;
 //                Enumeration e = hashtable.keys();
 //                Collection n = hashtable.values();
 //                while (e.hasMoreElements()) {
 //                    String temp = (String) e.nextElement();
 //                    System.out.println(temp + "  " + hashtable.get(temp));
 //                }
-                //System.out.println(n);
-                hashtablepro.add(hashtable, hashnew);
-                String a = "phach";
-                String b = "hoang";
-                String c = a + ":" + b;
-
-
+//System.out.println(n);
+//                hashtablepro.add(hashtable, hashnew);
+//                String a = "phach";
+//                String b = "hoang";
+//                String c = a + ":" + b;
 //               String hash = hashtable.toString();
 //
 //                byte[] hashsend = hash.getBytes();
 //                myconnection.getByteWriter().write(hashsend, 0, hash.length());
 //                myconnection.getByteWriter().flush();
-
-                fileIn.close();
-
-
-                fileIn2 = new BufferedReader(new FileReader(FILE_NAME2));
-                String line2;
-                ArrayList array2 = new ArrayList<list>();
-                Hashtable hashtable2 = new Hashtable();
-                while ((line2 = fileIn2.readLine()) != null) {
-                    Scanner tokenize = new Scanner(line2);
-                    while (tokenize.hasNext()) {
-                        array2.add(tokenize.next());
-                    }
-
-
-                }
-
-                Iterator j = array2.iterator();
-
-                while (j.hasNext()) {
-                    //System.out.println(i.next());
-                    String temp = (String) j.next();
-                    count2 = (Integer) hashtable2.get(temp);
-                    if (count2 == null) {
-                        hashtable2.put(temp, new Integer(1));
-                    } else {
-                        hashtable2.put(temp, new Integer(count2.intValue() + 1));
-                    }
-                }
-
-                hashtablepro.add(hashtable2, hashnew);
-                //   hashtablepro.out(hashnew);
-
-                //                Enumeration e = hashtable.keys();
+//
+//                fileIn.close();
+//
+//                fileIn2 = new BufferedReader(new FileReader(FILE_NAME2));
+//                String line2;
+//                ArrayList array2 = new ArrayList<list>();
+//                Hashtable hashtable2 = new Hashtable();
+//                while ((line2 = fileIn2.readLine()) != null) {
+//                    Scanner tokenize = new Scanner(line2);
+//                    while (tokenize.hasNext()) {
+//                        array2.add(tokenize.next());
+//                    }
+//
+//
+//                }
+//
+//                Iterator j = array2.iterator();
+//
+//                while (j.hasNext()) {
+//                    //System.out.println(i.next());
+//                    String temp = (String) j.next();
+//                    count2 = (Integer) hashtable2.get(temp);
+//                    if (count2 == null) {
+//                        hashtable2.put(temp, new Integer(1));
+//                    } else {
+//                        hashtable2.put(temp, new Integer(count2.intValue() + 1));
+//                    }
+//                }
+//
+//                hashtablepro.add(hashtable2, hashnew);
+//   hashtablepro.out(hashnew);
+//                Enumeration e = hashtable.keys();
 //                Collection n = hashtable.values();
 //                while (e.hasMoreElements()) {
 //                    String temp = (String) e.nextElement();
 //                    System.out.println(temp + "  " + hashtable.get(temp));
 //                }
-
-
-
-
-
-
-
 //                PrintWriter out = new PrintWriter(new File("phach.txt"));
 //
 //                while (e.hasMoreElements()) {
@@ -148,27 +162,11 @@ public class MRerServer extends Thread {
 //                }
 //            Enumeration q = hashtable.keys();
 //            while (q.hasMoreElements()) {
-//                String temp = (String) q.nextElement();
-//                System.out.println(temp + "  " + hashtable2.get(temp));
-//            }
-                fileIn2.close();
-               Enumeration e = hashnew.keys();
-                String responsestring = "";
-
-               while (e.hasMoreElements()) {
-                    String temp = (String) e.nextElement();
-                    responsestring = responsestring + "<" + temp + " " + hashnew.get(temp);
-
-               }
-               int size = hashnew.size();
-                System.out.print(responsestring);
-                String responsestring2 = ("HTTP 200 OK\r\nServer: " + responsestring+"\r\nContent-type: application/binary\r\nContent-length: " + size+"\r\n\r\n");
-                byte[] response = responsestring2.getBytes();
-                myconnection.getByteWriter().write(response, 0, response.length);
-                myconnection.getByteWriter().flush();
-
-
-
+////                String temp = (String) q.nextElement();
+////                System.out.println(temp + "  " + hashtable2.get(temp));
+////            }
+//                fileIn2.close();
+//               Enumeration e = hashnew.keys();
 //                try { //NetworkOutp
 //                    FileOutputStream fileOut =
 //                            new FileOutputStream("employee.ser");
@@ -180,67 +178,6 @@ public class MRerServer extends Thread {
 //                } catch (IOException i) {
 //                    i.printStackTrace();
 //                }
-
-
-
-
-
-
-            } catch (IOException ex) {
-                System.out.println("loiiiiiiiiiiiiiiiiiiiiiii");
-            }
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //
 //        for (int i = 0; i < Server.idList.size(); i++) {
 //            int b = Server.idList.get(i);
@@ -274,7 +211,6 @@ public class MRerServer extends Thread {
 //        }
 //
 //
-
 //            StringTokenizer st = new StringTokenizer(incoming,"/");
 //            if ((st.countTokens() == 4) && (st.nextToken().equals("GET ")) && (st.nextToken().equals("get")))
 //	    {
@@ -303,15 +239,4 @@ public class MRerServer extends Thread {
 //				    {
 //					System.out.println("Unable to upload file.");
 //				    }
-
-
-
-    }
-}
-
-
-        
-  
-
-
 
