@@ -1,8 +1,0 @@
-
-Host: 192.168.1.7:12345
-
-Max-Live: 5
-Max-Cache: 100
-Auto-Connect: true
-Shared-Directory: c:\temp
-Download-Directory: C:\temp1

@@ -18,25 +18,124 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 
 public class MRer extends Thread {
 
-    //   private String myip;
-    //   private int myport;
     private int mygroupID;
     private int filesize = 0;
     Groupcache cache;
     static Hashtable sumhash = new Hashtable();
     static int hashtableReceiveCount = 0;
-    //   public String GREETING = "GNUTELLA CONNECT/0.4";
-    //   public byte[] greeting = (GREETING + "\n\n").getBytes();
     static int numberofhosts = 0;
+    File fileName;
+    String[] paragraphs;
 
-    public MRer(int GroupID) {
-        //   myip = ip;
-        //  myport = port;
+    public MRer(int GroupID, File file) {
         mygroupID = GroupID;
+        fileName = file;
+        divideWork();
+    }
 
+    public void divideWork() {
+        int counter = 0;
+        String[] a = new String[10000];
+        BufferedReader fileInput = null;
+        int numLines = 0;
+
+        try {
+            FileReader file = new FileReader(fileName);
+            fileInput = new BufferedReader(file);
+        } catch (IOException ioException) {
+            JOptionPane.showMessageDialog(null, "Error Opening File", "Error 4: ", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        System.out.println("File opened");
+
+        try {
+
+            String text = "";
+            String line = fileInput.readLine();
+
+            while (line != null) {
+                counter++;
+                System.out.println("(" + counter + ") " + line);
+                text += (line + "\n");
+
+                line = fileInput.readLine();
+
+            }
+
+            numLines = counter;
+            int part[] = new int[10];
+            int number = 0;
+
+
+            for (int i = 0; i < Groupcache.getCount(); i++) {
+                Group group = Groupcache.Groups.get(i);
+                if (mygroupID == group.GroupID) {
+                    ArrayList<Host> hosts = group.Hosts;
+                    number = hosts.size();
+                    System.out.println(" so luong host : " + number);
+
+
+                    int division = numLines / number;
+                    for (int j = 0; j < number; j++) {
+                        part[j] = division;
+
+                        System.out.print(" so luong line co trong  part " + j + " la : " + part[j]);
+
+                    }
+                    if (numLines % number != 0) {
+                        part[number - 1] = part[number - 1] + (numLines % number);
+                        System.out.println(" part cuoi la :" + part[number - 1]);
+                    }
+                    String line2 = fileInput.readLine();
+                    System.out.println(line2);
+                    System.out.println(line);
+                }
+            }
+            if (fileInput != null) {
+                try {
+                    fileInput.close();
+                } catch (IOException ioException) {
+                    JOptionPane.showMessageDialog(null, "Error Opening File", "Error 4: ", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            System.out.println("File closed");
+
+            StringTokenizer token = new StringTokenizer(text);
+            int count = 0;
+            int i = 0;
+            String paragraph = "";
+            paragraphs = new String[number];
+
+            while (token.hasMoreTokens()) {
+                ++count;
+                paragraph += token.nextToken();
+
+                if (count == part[i]) {
+                    paragraphs[i] = paragraph;
+                    paragraph = "";
+                    ++i;
+                    count = 0;
+                }
+            }
+
+
+
+        } catch (IOException ioException) {
+            JOptionPane.showMessageDialog(null, "Error reading File", "Error 5: ", JOptionPane.ERROR_MESSAGE);
+            if (fileInput != null) {
+                try {
+                    fileInput.close();
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Error Opening File", "Error 4: ", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            System.exit(1);
+        }
     }
 
     public static synchronized void addhash(Hashtable hashtable) throws FileNotFoundException {
@@ -90,7 +189,7 @@ public class MRer extends Thread {
             System.out.println("Size group la: " + Groupcache.getCount());
             if (mygroupID == group.GroupID) {
                 ArrayList<Host> hosts = group.Hosts;
-                  numberofhosts = hosts.size();
+                numberofhosts = hosts.size();
                 for (int j = 0; j < hosts.size(); ++j) {
                     System.out.println("J la: " + j);
                     System.out.println("Hostsize la:" + hosts.size());
@@ -100,7 +199,7 @@ public class MRer extends Thread {
                     System.out.println("port ben kia la:" + host.getPort());
 
                     System.out.println("name la:" + host.getName());
-                    MapReducethread newthread = new MapReducethread(host.getPort(), host.getName(), mygroupID);
+                    MapReducethread newthread = new MapReducethread(host.getPort(), host.getName(), mygroupID, paragraphs[j]);
                     newthread.mrer = this;
                     newthread.start();
                     // break;

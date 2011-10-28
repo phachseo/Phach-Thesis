@@ -15,6 +15,7 @@ public class Group {
 
     public int GroupID;
     public static ArrayList <Host> Hosts;
+    public String[] work;
 
     public Group(int agroup) {
 

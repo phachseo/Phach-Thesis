@@ -111,7 +111,7 @@ public class Server extends Thread {
                     if (!isPacketContainedInHashtable) {
                         Searcher.pingtable.put((Packet) ping, ping);
                         
-                         System.out.println("dia chi? ping toi' la` :"+ ping.getIP().toString());
+                        // System.out.println("dia chi? ping toi' la` :"+ ping.getIP().toString());
                         
 //                        String pingIPString = ping.getIP().toString();
 //                        int pingPort = ping.getPort();
@@ -179,7 +179,7 @@ public class Server extends Thread {
                 if (header.identify() == Packet.PONG) {
                 
                     Pong pong = new Pong(newpacket);
-                        System.out.println(" NHAN DC GOI PONG: "+ pong.getIP());
+                     //   System.out.println(" NHAN DC GOI PONG: "+ pong.getIP());
                     Host h = new Host( pong.getIP().toString(), pong.getPort());
                     if(!HostCache.isPresent(h)){
                         HostCache.addHost(h);

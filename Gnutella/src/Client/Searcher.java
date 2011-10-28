@@ -24,7 +24,9 @@ import MRonP2P.Groupcache;
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Array;
 import java.util.*;
+import javax.print.DocFlavor.STRING;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
@@ -376,6 +378,7 @@ class ConnectionPanel extends JPanel {
 
 class SearchPanel extends JPanel {
     // Preferences parent;
+
     private File fileName;
     private int numLines;
     private String[] data;
@@ -529,68 +532,138 @@ class SearchPanel extends JPanel {
         //  groupTable.setValueAt(new Integer(id), 0, 0);
         int count = groupTable.getRowCount();
         for (int i = 1; i < count; i++) {
-             Object groupID = groupTable.getValueAt(i, 0);
-             if (Integer.parseInt(groupID.toString()) == id ) {
-                 return;
-             }
+            Object groupID = groupTable.getValueAt(i, 0);
+            if (Integer.parseInt(groupID.toString()) == id) {
+                return;
+            }
         }
-        
+
         Object[] newRow = new Object[1];
         newRow[0] = id;
         groupTable.addRow(newRow);
     }
 
+    public void separateFile() {
+        openFile();
+        try {
+            String line2 = fileInput.readLine();
+
+            System.out.println(line2);
+            int part[] = new int[2];
+            part[0] = 24;
+            part[1] = 25;
+            // System.out.println("Chay vao xuat file : ");
+            for (int k = 0; k < part.length; k++) {
+                // System.out.println(" xuat cho file thu 1 ");
+
+                PrintWriter out = new PrintWriter(new File("phach." + k + ".txt"));
+                while (line2 != null) {
+                    for (int l = 0; l < part[k]; l++) {
+
+                        //System.out.println(" xuat cho file thu 2 ");
+                        out.write(line2);
+                        out.write("\r\n");
+                        line2 = fileInput.readLine();
+                    }
+
+
+                }
+
+
+
+
+            }
+            closeFile();
+        } catch (Exception e) {
+        }
+
+    }
+
     public void getNumberOfLines() {
         int counter = 0;
+        String[] a = new String[10000];
         // Open the file
         openFile();
         // Loop through file incrementing counter
         try {
+//            int m=0;
+            String text = "";
             String line = fileInput.readLine();
+
+
             while (line != null) {
                 counter++;
                 System.out.println("(" + counter + ") " + line);
+                text += (line + "\n");
+
+//                    a[m] = line;
+//
+//                m++;
                 line = fileInput.readLine();
+
             }
+
+//                    for (int l= 0 ; l<1000; l++){
+//
+//                    System.out.println(a[l]);
+//                    }
             numLines = counter;
+            int part[] = new int[10];
 
             int rowIndex = mrtable.getSelectedRow();
-            System.out.println(rowIndex);
+            System.out.println(" So Form Group Lay dc : " + rowIndex);
+            // System.out.println(rowIndex);
             Integer groupID = (Integer) mrtable.getValueAt(rowIndex, 0);
+            System.out.println(" So GroupID Lay dc : " + groupID);
             for (int i = 0; i < Groupcache.getCount(); i++) {
                 Group group = Groupcache.Groups.get(i);
                 if (groupID == group.GroupID) {
                     ArrayList<Host> hosts = group.Hosts;
                     number = hosts.size();
+                    System.out.println(" so luong host : " + number);
 
-                    int part[] = new int[10];
+
+                    int division = numLines / number;
                     for (int j = 0; j < number; j++) {
-                        part[j] = numLines / number;
+                        part[j] = division;
 
-                        //System.out.print(line);
+                        System.out.print(" so luong line co trong  part " + j + " la : " + part[j]);
 
                     }
                     if (numLines % number != 0) {
-                        part[number - 1] = numLines % number;
+                        part[number - 1] = part[number - 1] + (numLines % number);
+                        System.out.println(" part cuoi la :" + part[number - 1]);
                     }
-                    while (line!=null) {
-                            for(int k= 0;k< part.length;k++){
-                         PrintWriter out = new PrintWriter(new File("phach." + k + ".txt"));
-                        for (int l = 0; l < part[k]; l++) {
-                            out.write(line);
-                            out.write("\r\n");
-                                          
-                    }  
-                        line = fileInput.readLine();
-                        
-                    }
- 
-                    
-                  
-                    closeFile();
+                    String line2 = fileInput.readLine();
+                    System.out.println(line2);
+                    System.out.println(line);
+
+
+
                 }
             }
+            closeFile();
+
+            StringTokenizer token = new StringTokenizer(text);
+            int count = 0;
+            int i = 0;
+            String paragraph = "";
+            String[] paragraphs = new String[number];
+
+            while (token.hasMoreTokens()) {
+                ++count;
+                paragraph += token.nextToken();
+
+                if (count == part[i]) {
+                    paragraphs[i] = paragraph;
+                    paragraph = "";
+                    ++i;
+                    count = 0;
+                }
             }
+
+
+
         } catch (IOException ioException) {
             JOptionPane.showMessageDialog(this, "Error reading File",
                     "Error 5: ", JOptionPane.ERROR_MESSAGE);
@@ -622,26 +695,19 @@ class SearchPanel extends JPanel {
         System.out.println("File opened");
     }
 
-    public void getFileName() {
+    public File getFileName() {
         // Display file dialog so user can select file to open
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         int result = fileChooser.showOpenDialog(this);
 
-        // If cancel button selected return
         if (result == JFileChooser.CANCEL_OPTION) {
-            return;
+            return null;
         }
 
-        // Obtain selected file
+        return fileChooser.getSelectedFile();
 
-        fileName = fileChooser.getSelectedFile();
-//
-//        if (checkFileName()) {
-//            openButton.setEnabled(false);
-//            readButton.setEnabled(true);
-//        }
     }
 
     public void readFile() {
@@ -716,10 +782,12 @@ class SearchPanel extends JPanel {
 
         public void actionPerformed(ActionEvent event) {
             if (event.getActionCommand().equals("Choose file")) {
-                getFileName();
-                openFile();
-                readFile();
-                getNumberOfLines();
+                File file = getFileName();
+                if (file != null) {
+                    fileName = file;
+                    
+
+                }
 
             }
 
@@ -738,11 +806,18 @@ class SearchPanel extends JPanel {
             //int group = 10;
 
             int rowIndex = mrtable.getSelectedRow();
-            System.out.println(rowIndex);
-            Integer groupID = (Integer) mrtable.getValueAt(rowIndex, 0);
+            System.out.println("rowIndex = " + rowIndex);
+            if (rowIndex > 0) {
+                if (fileName == null) {
+                    JOptionPane.showMessageDialog(null, "Please select a file for doing map-reduce");
+                }
+                else {
+                    Integer groupID = (Integer) mrtable.getValueAt(rowIndex, 0);
 
-            MRer mrer = new MRer(groupID.intValue());
-            mrer.start();
+                    MRer mrer = new MRer(groupID.intValue(), fileName);
+                    mrer.start();
+                }
+            }
         }
     }
 

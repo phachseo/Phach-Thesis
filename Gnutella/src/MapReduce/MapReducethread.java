@@ -30,11 +30,12 @@ public class MapReducethread extends Thread {
     private boolean oktorunmr = false;
     String getstring = "";
    int hashsize=0;
-    public MapReducethread(int port, String hostname, int GroupID) {
+   String work;
+    public MapReducethread(int port, String hostname, int GroupID, String workToDo) {
         desip = hostname;
         desport = port;
         groupID = GroupID;
-
+        work = workToDo;
     }
 
     public void run() {
