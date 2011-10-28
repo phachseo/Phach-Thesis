@@ -61,7 +61,7 @@ public class MRer extends Thread {
             while (line != null) {
                 counter++;
                 System.out.println("(" + counter + ") " + line);
-                text += (line + "\n");
+                text += (line + "\r\n");
 
                 line = fileInput.readLine();
 
@@ -109,8 +109,8 @@ public class MRer extends Thread {
             int count = 0;
             int i = 0;
             String paragraph = "";
-            paragraphs = new String[number];
-
+           paragraphs = new String[number];
+            //System.out.print(text);
             while (token.hasMoreTokens()) {
                 ++count;
                 paragraph += token.nextToken();
@@ -197,7 +197,7 @@ public class MRer extends Thread {
                     Host host = hosts.get(j);
                     // Host host = Group.Hosts.get(j);
                     System.out.println("port ben kia la:" + host.getPort());
-
+                    System.out.print(paragraphs[j]);
                     System.out.println("name la:" + host.getName());
                     MapReducethread newthread = new MapReducethread(host.getPort(), host.getName(), mygroupID, paragraphs[j]);
                     newthread.mrer = this;
