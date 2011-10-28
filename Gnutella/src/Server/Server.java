@@ -19,7 +19,7 @@ import Client.IPAddress;
 import Client.Pinger;
 import Client.Connection;
 import Client.HostCache;
-import MRonP2P.Searcher;
+import Client.Searcher;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;

@@ -5,7 +5,6 @@ import Packet.Packet;
 import Packet.Ping;
 import Packet.Pong;
 import Packet.Response;
-import MRonP2P.Searcher;
 
 public class Pinger extends Thread {
 

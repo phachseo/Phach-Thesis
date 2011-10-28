@@ -2,7 +2,6 @@ package Client;
 
 import Server.SharedDirectory;
 import Client.Connection;
-import MRonP2P.Searcher;
 import java.io.*;
 import java.net.*;
 

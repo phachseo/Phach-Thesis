@@ -4,7 +4,6 @@ package Client;
 Big hairy GUI
  */
 //import team4.Packet.Query;
-import MRonP2P.*;
 import Client.Downloader;
 import MapReduce.MRer;
 import Server.ResultSet;
@@ -20,6 +19,8 @@ import Client.Preferences;
 import Client.Connection;
 import Client.HostCache;
 import Client.Connector;
+import MRonP2P.Group;
+import MRonP2P.Groupcache;
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -28,7 +29,6 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
 import javax.swing.border.*;
-
 
 public class Searcher {
     // private static int Speed has to come from the user.
@@ -123,6 +123,7 @@ public class Searcher {
         }
     }
 }
+
 class TabbedPaneFrame extends JFrame implements ChangeListener {
 
     private JTabbedPane tabbedPane;

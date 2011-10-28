@@ -10,7 +10,7 @@ import MRonP2P.Groupcache;
 import Network.Host;
 import MapReduce.MRListener;
 import Client.Mine;
-import MRonP2P.Searcher;
+import Client.Searcher;
 import java.util.Map;
 
 /**

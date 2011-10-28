@@ -4,7 +4,6 @@ package Client;
 Host cache - list of IP addresses to load on start up
  */
 import Network.Host;
-import MRonP2P.Searcher;
 import java.util.Arrays;
 
 public class HostCache {

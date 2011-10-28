@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Preferences {
 
-    public static String FILE_NAME = "D:\\Phach-Thesis\\Gnutella\\src\\team4\\preferences.txt";
+    public static String FILE_NAME = "D:\\Phach-Thesis\\Gnutella\\src\\MRonP2P\\preferences.txt";
     public static int MAX_LIVE = 5;
     public static int MAX_CACHE = 100;
     public static boolean AUTO_CONNECT = true;

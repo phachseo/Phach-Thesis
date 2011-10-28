@@ -1,5 +1,6 @@
 package MRonP2P;
 
+import Client.Searcher;
 import Server.SharedDirectory;
 import Server.Listener;
 import Client.Mine;

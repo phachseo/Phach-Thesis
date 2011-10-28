@@ -8,7 +8,7 @@ import Client.IPAddress;
 import Client.Mine;
 import Network.NetworkManager;
 import Server.ResultSet;
-import MRonP2P.Searcher;
+import Client.Searcher;
 import Server.SharedDirectory;
 import java.util.*;
 

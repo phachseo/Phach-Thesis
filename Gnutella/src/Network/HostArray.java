@@ -2,7 +2,7 @@ package Network;
 
 import Client.IPAddress;
 import Client.Connection;
-import MRonP2P.Searcher;
+import Client.Searcher;
 import java.io.*;
 import java.net.*;
 import java.util.Arrays;
