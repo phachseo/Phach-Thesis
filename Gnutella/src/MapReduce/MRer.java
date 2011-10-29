@@ -133,7 +133,7 @@ public class MRer extends Thread {
                  String paragraph = "";
             int count = 0;
             int i = 0;
-            StringTokenizer token = new StringTokenizer(text,"\n");
+            StringTokenizer token = new StringTokenizer(text,"\r\n");
             paragraphs = new String[number];
             //System.out.print(text);
             while (token.hasMoreTokens()) {
