@@ -139,7 +139,7 @@ public class MRer extends Thread {
             while (token.hasMoreTokens()) {
                 ++count;
                 paragraph += token.nextToken() + "\n";
-                System.out.println(" out counter : " + counter);
+               // System.out.println(" out counter : " + counter);
                 if (count == part[i]) {
                     paragraphs[i] = paragraph;
                     paragraph = "";
@@ -222,7 +222,7 @@ public class MRer extends Thread {
                     Host host = hosts.get(j);
                     // Host host = Group.Hosts.get(j);
                     System.out.println("port ben kia la:" + host.getPort());
-                    System.out.print(paragraphs[j]);
+                //    System.out.print(paragraphs[j]);
                     System.out.println("name la:" + host.getName());
                     MapReducethread newthread = new MapReducethread(host.getPort(), host.getName(), mygroupID, paragraphs[j]);
                     newthread.mrer = this;
