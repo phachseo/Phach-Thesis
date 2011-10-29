@@ -52,6 +52,7 @@ public class MRerServer extends Thread {
             if (filecontent.endsWith(" HTTP")) {
 
                 filecontent = filecontent.substring(0, (filecontent.length() - 5));
+                System.out.println("Nhan dc du lieu : " + filecontent);
                 BufferedReader fileIn = null;
                 try {
 
