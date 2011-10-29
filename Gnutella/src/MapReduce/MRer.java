@@ -138,7 +138,7 @@ public class MRer extends Thread {
             //System.out.print(text);
             while (token.hasMoreTokens()) {
                 ++count;
-                paragraph += token.nextToken() + "\n";
+                paragraph += token.nextToken() + "\r\n";
                // System.out.println(" out counter : " + counter);
                 if (count == part[i]) {
                     paragraphs[i] = paragraph;
