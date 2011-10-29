@@ -62,7 +62,7 @@ public class MRer extends Thread {
             while (line != null) {
                 counter++;
                 System.out.println("(" + counter + ") " + line);
-                text += (line + "\r\n");
+                text += (line + "\n");
 
                 line = fileInput.readLine();
 
@@ -138,7 +138,7 @@ public class MRer extends Thread {
             //System.out.print(text);
             while (token.hasMoreTokens()) {
                 ++count;
-                paragraph += token.nextToken() + "\r\n";
+                paragraph += token.nextToken() + "\n";
                // System.out.println(" out counter : " + counter);
                 if (count == part[i]) {
                     paragraphs[i] = paragraph;
@@ -179,7 +179,7 @@ public class MRer extends Thread {
                 //  System.out.println(temp+" "+hastable2.get(temp));
 
                 out.write(temp + " ");
-                out.write(sumhash.get(temp) + "\r\n");
+                out.write(sumhash.get(temp) + "\n");
 
                 hashtableReceiveCount = 0;
 
