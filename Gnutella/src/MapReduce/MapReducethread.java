@@ -40,7 +40,7 @@ public class MapReducethread extends Thread {
 
     public void run() {
         try {
-PrintWriter out = new PrintWriter(new File("phi2.txt"));
+//PrintWriter out = new PrintWriter(new File("phi2.txt"));
             MRListener mo = new MRListener(Mine.getPort() + 1);
             mo.start();
             System.out.println("IP va port la: " + desip + desport);
@@ -49,7 +49,7 @@ PrintWriter out = new PrintWriter(new File("phi2.txt"));
             Connection MRconnection = new Connection(socket, Connection.MRING);
 
 
-            String greetstring = "GET /get/" + groupID + "/" + " HTTP/1.0\r\nConnection: Keep-Alive\r\\nPHACHSEO NO1\r\nRange: bytes=0-\r\n\r\n";
+            String greetstring = "GET /get/" + groupID + "/" + work +" HTTP/1.0\r\nConnection: Keep-Alive\r\\nPHACHSEO NO1\r\nRange: bytes=0-\r\n\r\n";
             byte[] greeting = greetstring.getBytes();
 
             MRconnection.getByteWriter().write(greeting, 0, greeting.length);
@@ -121,7 +121,7 @@ PrintWriter out = new PrintWriter(new File("phi2.txt"));
          mrer.addhash(hash);
                 
               //  hashtablepro.out(hash);
-                out.close();
+             //   out.close();
               //  hashtablepro.out(hash);
               
 
