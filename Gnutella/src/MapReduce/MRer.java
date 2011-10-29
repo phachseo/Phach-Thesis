@@ -18,6 +18,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
@@ -104,17 +105,41 @@ public class MRer extends Thread {
                 }
             }
             System.out.println("File closed");
-
-            StringTokenizer token = new StringTokenizer(text);
+//            paragraphs = new String[number];
+//            StringTokenizer token = new StringTokenizer(text);
+//            int count = 0;
+//            int i = 0;
+//            String paragraph = "";
+//            BufferedReader filetext = null;
+//            filetext = new BufferedReader(new FileReader(text));
+//            String templine;
+//            while((templine = filetext.readLine())!= null){
+//            Scanner tokenize = new Scanner(templine);
+//            while(tokenize.hasNext()){
+//
+//                   ++count;
+//                paragraph += token.nextToken() + "\n";
+//
+//                if (count == part[i]) {
+//                    paragraphs[i] = paragraph;
+//                    paragraph = "";
+//                    ++i;
+//                    count = 0;
+//
+//            }
+//
+//            }
+//            }
+                 String paragraph = "";
             int count = 0;
             int i = 0;
-            String paragraph = "";
-           paragraphs = new String[number];
+            StringTokenizer token = new StringTokenizer(text,"\n");
+            paragraphs = new String[number];
             //System.out.print(text);
             while (token.hasMoreTokens()) {
                 ++count;
-                paragraph += token.nextToken();
-
+                paragraph += token.nextToken() + "\n";
+                System.out.println(" out counter : " + counter);
                 if (count == part[i]) {
                     paragraphs[i] = paragraph;
                     paragraph = "";
@@ -123,7 +148,7 @@ public class MRer extends Thread {
                 }
             }
 
-
+            System.out.println(" moi vua cat; du lieu :" + paragraphs[0]);
 
         } catch (IOException ioException) {
             JOptionPane.showMessageDialog(null, "Error reading File", "Error 5: ", JOptionPane.ERROR_MESSAGE);
