@@ -18,7 +18,7 @@ public class Mine
   {
     try
     {
-      Socket s = new Socket("java.sun.com", 80);
+      Socket s = new Socket("google.com", 80);
       ipString = s.getLocalAddress().getHostAddress();
       System.out.println("Local address: " + InetAddress.getLocalHost().getHostAddress());
       byte[] ipbytes = InetAddress.getLocalHost().getAddress();
