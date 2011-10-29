@@ -36,13 +36,15 @@ public class MRListener extends Thread {
             while (true) {
                 Socket socket = ss.accept();
                 connection = new Connection(socket, Connection.INCOMING);
-                 String incoming = connection.getTextReader().readLine();
-                while(incoming!= null){
+               String incoming ="";
+                String incomingraw = connection.getTextReader().readLine();
+   while (incomingraw != null) {
 
-                    incoming = connection.getTextReader().readLine();
+                incoming += (incomingraw + "\r\n");
 
+                incomingraw = connection.getTextReader().readLine();
 
-                }
+            }
                 System.out.println(" nhan dc du lieu ban dau la :" + incoming);
                 if (incoming == null) {
                     continue;
