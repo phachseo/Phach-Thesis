@@ -56,17 +56,22 @@ public class MRerServer extends Thread {
                 BufferedReader fileIn = null;
                 try {
 
-                    //fileIn = new BufferedReader(new FileReader(filecontent));
-                    String line = filecontent;
+//                    fileIn = new BufferedReader(new FileReader(FILE_NAME));
+                    String line = filecontent ;
                     ArrayList array = new ArrayList<list>();
                     Hashtable hashtable = new Hashtable();
                     Hashtable hashnew = new Hashtable();
-                    while (line != null) {
-                        Scanner tokenize = new Scanner(line);
+                    System.out.println(" in line ra ne");
+                    System.out.print(line);
+                    while (line  != null) {
+                       Scanner tokenize = new Scanner(line);
                         while (tokenize.hasNext()) {
+                            System.out.println("Khi TOK : "+tokenize.next());
                             array.add(tokenize.next());
                         }
+                       System.out.println(" CHAY RA TOI DAY");
                     }
+                   System.out.println(" CHAY RA TOI DAY 2 ");
                     Iterator i = array.iterator();
                     while (i.hasNext()) {
                         //System.out.println(i.next());

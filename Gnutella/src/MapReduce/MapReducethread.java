@@ -96,6 +96,7 @@ public class MapReducethread extends Thread {
                 //  StringTokenizer st2 = new StringTokenizer(st," ");
               //  }
 
+
                 }
 
              StringTokenizer st = new StringTokenizer(getstring,"<");
