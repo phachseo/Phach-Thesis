@@ -66,7 +66,7 @@ public class MRListener extends Thread {
                 System.out.println("before while");
                 while ((c = r.read()) != -1) {
                     incoming += (char)c;
-                    System.out.print((char) c);
+               //     System.out.print((char) c);
 
                 }
 
