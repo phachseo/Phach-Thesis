@@ -61,7 +61,7 @@ public class MRerServer extends Thread {
                     ArrayList array = new ArrayList<list>();
                     Hashtable hashtable = new Hashtable();
                     Hashtable hashnew = new Hashtable();
-                    while ((line = fileIn.readLine()) != null) {
+                    while (line != null) {
                         Scanner tokenize = new Scanner(line);
                         while (tokenize.hasNext()) {
                             array.add(tokenize.next());
