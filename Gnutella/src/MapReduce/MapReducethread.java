@@ -54,6 +54,7 @@ public class MapReducethread extends Thread {
 
             MRconnection.getByteWriter().write(greeting, 0, greeting.length);
             MRconnection.getByteWriter().flush();
+            MRconnection.getByteWriter().close();
             //   MRconnection.closeByteWriter();
             String responseline;
 

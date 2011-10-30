@@ -8,6 +8,7 @@ import Client.HostCache;
 import Server.Server;
 import java.net.*;
 import java.io.*;
+import java.nio.CharBuffer;
 import java.util.Arrays;
 
 public class MRListener extends Thread {
@@ -40,6 +41,8 @@ public class MRListener extends Thread {
                 Socket socket = ss.accept();
                 connection = new Connection(socket, Connection.INCOMING);
                 String incoming = "";
+
+                /*
                 String incomingraw = connection.getTextReader().readLine();
                 
                 while (incomingraw != null) {
@@ -52,6 +55,18 @@ public class MRListener extends Thread {
 
                     incomingraw = connection.getTextReader().readLine();
                     System.out.println("count = " + ++count);
+
+                }
+                 *
+                 */
+
+                
+                Reader r = new InputStreamReader(connection.getByteReader());
+                int c;
+                System.out.println("before while");
+                while ((c = r.read()) != -1) {
+                    incoming += (char)c;
+                    System.out.print((char) c);
 
                 }
 
