@@ -41,11 +41,11 @@ public class MRListener extends Thread {
                 while (incomingraw != null) {
                     System.out.println("IncomingRaw la :" + incomingraw);
 
-                    incoming += (incomingraw + "\n");
+                    incoming += (incomingraw + "\r\n");
                     System.out.println("Incoming la :" + incoming);
-
+                        
                     incomingraw = connection.getTextReader().readLine();
-                   
+                    
                 }
                 System.out.println(" nhan dc du lieu ban dau la :" + incoming);
                 if (incoming == null) {

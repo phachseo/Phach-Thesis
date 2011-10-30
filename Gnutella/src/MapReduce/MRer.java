@@ -1,13 +1,13 @@
 package MapReduce;
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this template, choose Tools | Templates
+* and open the template in the editor.
+*/
 /**int
- *
- * @author phachseo
- */
+*
+* @author phachseo
+*/
 import MRonP2P.Group;
 import MRonP2P.Groupcache;
 import MRonP2P.hashtablepro;
@@ -62,7 +62,7 @@ public class MRer extends Thread {
             while (line != null) {
                 counter++;
                 System.out.println("(" + counter + ") " + line);
-                text += (line + "\n");
+                text += (line + "\r\n");
 
                 line = fileInput.readLine();
 
@@ -85,7 +85,7 @@ public class MRer extends Thread {
                     for (int j = 0; j < number; j++) {
                         part[j] = division;
 
-                        System.out.print(" so luong line co trong  part " + j + " la : " + part[j]);
+                        System.out.print(" so luong line co trong part " + j + " la : " + part[j]);
 
                     }
                     if (numLines % number != 0) {
@@ -105,41 +105,41 @@ public class MRer extends Thread {
                 }
             }
             System.out.println("File closed");
-//            paragraphs = new String[number];
-//            StringTokenizer token = new StringTokenizer(text);
-//            int count = 0;
-//            int i = 0;
-//            String paragraph = "";
-//            BufferedReader filetext = null;
-//            filetext = new BufferedReader(new FileReader(text));
-//            String templine;
-//            while((templine = filetext.readLine())!= null){
-//            Scanner tokenize = new Scanner(templine);
-//            while(tokenize.hasNext()){
+// paragraphs = new String[number];
+// StringTokenizer token = new StringTokenizer(text);
+// int count = 0;
+// int i = 0;
+// String paragraph = "";
+// BufferedReader filetext = null;
+// filetext = new BufferedReader(new FileReader(text));
+// String templine;
+// while((templine = filetext.readLine())!= null){
+// Scanner tokenize = new Scanner(templine);
+// while(tokenize.hasNext()){
 //
-//                   ++count;
-//                paragraph += token.nextToken() + "\n";
+// ++count;
+// paragraph += token.nextToken() + "\n";
 //
-//                if (count == part[i]) {
-//                    paragraphs[i] = paragraph;
-//                    paragraph = "";
-//                    ++i;
-//                    count = 0;
+// if (count == part[i]) {
+// paragraphs[i] = paragraph;
+// paragraph = "";
+// ++i;
+// count = 0;
 //
-//            }
+// }
 //
-//            }
-//            }
+// }
+// }
                  String paragraph = "";
             int count = 0;
             int i = 0;
-            StringTokenizer token = new StringTokenizer(text,"\r\n");
+            StringTokenizer token = new StringTokenizer(text,"\n");
             paragraphs = new String[number];
             //System.out.print(text);
             while (token.hasMoreTokens()) {
                 ++count;
                 paragraph += token.nextToken() + "\n";
-               // System.out.println(" out counter : " + counter);
+                System.out.println(" out counter : " + counter);
                 if (count == part[i]) {
                     paragraphs[i] = paragraph;
                     paragraph = "";
@@ -176,10 +176,10 @@ public class MRer extends Thread {
             //Collection m= hastable2.values();
             while (q.hasMoreElements()) {
                 String temp = (String) q.nextElement();
-                //  System.out.println(temp+" "+hastable2.get(temp));
+                // System.out.println(temp+" "+hastable2.get(temp));
 
                 out.write(temp + " ");
-                out.write(sumhash.get(temp) + "\n");
+                out.write(sumhash.get(temp) + "\r\n");
 
                 hashtableReceiveCount = 0;
 
@@ -193,17 +193,17 @@ public class MRer extends Thread {
 
         // try {
         System.out.println("Starting Mapreduce Job");
-//            Socket a = new Socket(myip, myport);
+// Socket a = new Socket(myip, myport);
 
         // Connection MRconnection = new Connection(a, Connection.MRING);
 
 
 
-//            MRconnection.getByteWriter().write(greeting, 0, greeting.length);
+// MRconnection.getByteWriter().write(greeting, 0, greeting.length);
         //MRconnection.getByteWriter().flush();
 
-        //  connection.getByteWriter().write(greeting, 0, greeting.length);
-        //   connection.getByteWriter().flush();
+        // connection.getByteWriter().write(greeting, 0, greeting.length);
+        // connection.getByteWriter().flush();
 
         int d = Groupcache.getCount();
         System.out.println("phachseo la :" + d);
@@ -222,7 +222,7 @@ public class MRer extends Thread {
                     Host host = hosts.get(j);
                     // Host host = Group.Hosts.get(j);
                     System.out.println("port ben kia la:" + host.getPort());
-                //    System.out.print(paragraphs[j]);
+                    System.out.print(paragraphs[j]);
                     System.out.println("name la:" + host.getName());
                     MapReducethread newthread = new MapReducethread(host.getPort(), host.getName(), mygroupID, paragraphs[j]);
                     newthread.mrer = this;
@@ -231,7 +231,7 @@ public class MRer extends Thread {
 
                 }
                 break;
-//                else continue;
+// else continue;
             }
 
 
@@ -240,9 +240,9 @@ public class MRer extends Thread {
         }
 
 
-        //      } catch (IOException e) {
-        //        System.out.println("Unable to do the job.");
-        //    }
+        // } catch (IOException e) {
+        // System.out.println("Unable to do the job.");
+        // }
 
 
     }

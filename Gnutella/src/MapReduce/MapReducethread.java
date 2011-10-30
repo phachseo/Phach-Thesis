@@ -54,7 +54,8 @@ public class MapReducethread extends Thread {
             System.out.println(" do dai du lieu : " + greeting.length);
             MRconnection.getByteWriter().write(greeting, 0, greeting.length);
             MRconnection.getByteWriter().flush();
-            //   MRconnection.closeByteWriter();
+            //   MRconnection.closeByteWriter
+            MRconnection.getByteWriter().close();
             String responseline;
 
             while (!((responseline = MRconnection.getTextReader().readLine()).equals(""))) // Run through the HTTP header
