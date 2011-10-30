@@ -56,8 +56,8 @@ public class MRerServer extends Thread {
                 BufferedReader fileIn = null;
                 try {
 
-                    fileIn = new BufferedReader(new FileReader(filecontent));
-                    String line;
+                    //fileIn = new BufferedReader(new FileReader(filecontent));
+                    String line = filecontent;
                     ArrayList array = new ArrayList<list>();
                     Hashtable hashtable = new Hashtable();
                     Hashtable hashnew = new Hashtable();
