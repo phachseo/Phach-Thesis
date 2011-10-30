@@ -32,22 +32,33 @@ public class MRListener extends Thread {
         try {   //ServerSocket ss = new ServerSocket
             // System.out.println("Port goi di:"+ Mine.getPort());
             ServerSocket ss = new ServerSocket(myport, MIN_PRIORITY, InetAddress.getLocalHost());
-
+            int count = 0;
             while (true) {
+
+                
+
                 Socket socket = ss.accept();
                 connection = new Connection(socket, Connection.INCOMING);
                 String incoming = "";
                 String incomingraw = connection.getTextReader().readLine();
+                
                 while (incomingraw != null) {
+                    
+
                     System.out.println("IncomingRaw la :" + incomingraw);
 
                     incoming += (incomingraw + "\r\n");
                     System.out.println("Incoming la :" + incoming);
 
                     incomingraw = connection.getTextReader().readLine();
-                   
+                    System.out.println("count = " + ++count);
+
                 }
+
+                System.out.println("phachseo");
                 System.out.println(" nhan dc du lieu ban dau la :" + incoming);
+
+                
                 if (incoming == null) {
                     continue;
                 } else if (incoming.indexOf(GREETING) == -1) {
