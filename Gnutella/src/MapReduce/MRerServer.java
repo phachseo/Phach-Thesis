@@ -62,16 +62,15 @@ public class MRerServer extends Thread {
                     Hashtable hashnew = new Hashtable();
                    System.out.println(" in line ra ne");
                    System.out.print(line);
-                    while (line != null) {
-                       Scanner tokenize = new Scanner(line);
-                        while (tokenize.hasNext()) {
+                    
+                     StringTokenizer tokenize = new StringTokenizer(line);
+                        while (tokenize.hasMoreElements()) {
                      
-                            System.out.println("Khi TOK : "+tokenize.next());
-                            array.add(tokenize.next());
+                            System.out.println("Khi TOK : "+tokenize.nextToken());
+                            array.add(tokenize.nextToken());
                           //  System.out.println(" array :" + array);
                                               }
-                       System.out.println(" CHAY RA TOI DAY");
-                    }
+                
                    System.out.println(" CHAY RA TOI DAY 2 ");
                     Iterator i = array.iterator();
                     while (i.hasNext()) {
