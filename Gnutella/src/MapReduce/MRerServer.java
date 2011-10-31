@@ -66,9 +66,10 @@ public class MRerServer extends Thread {
                      StringTokenizer tokenize = new StringTokenizer(line);
                         while (tokenize.hasMoreElements()) {
                      
-                            System.out.println("Khi TOK : "+tokenize.nextToken());
+                   //         System.out.println("Khi TOK : "+tokenize.nextToken());
                             array.add(tokenize.nextToken());
-                          //  System.out.println(" array :" + array);
+
+                            System.out.println(" array :" + array);
                                               }
                 
                    System.out.println(" CHAY RA TOI DAY 2 ");
