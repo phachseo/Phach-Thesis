@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 import javax.print.attribute.standard.Severity;
 import MRonP2P.hashtablepro;
 import MRonP2P.hashtablepro;
-import MRonP2P.list;
 
 /**
  *
@@ -56,19 +55,21 @@ public class MRerServer extends Thread {
                 BufferedReader fileIn = null;
                 try {
 
-//                    fileIn = new BufferedReader(new FileReader(FILE_NAME));
-                    String line = filecontent ;
+                   // fileIn = new BufferedReader(new FileReader(FILE_NAME));
+                    String line =filecontent;
                     ArrayList array = new ArrayList<list>();
                     Hashtable hashtable = new Hashtable();
                     Hashtable hashnew = new Hashtable();
-                    System.out.println(" in line ra ne");
-                    System.out.print(line);
-                    while (line  != null) {
+                   System.out.println(" in line ra ne");
+                   System.out.print(line);
+                    while (line != null) {
                        Scanner tokenize = new Scanner(line);
                         while (tokenize.hasNext()) {
+                     
                             System.out.println("Khi TOK : "+tokenize.next());
                             array.add(tokenize.next());
-                        }
+                          //  System.out.println(" array :" + array);
+                                              }
                        System.out.println(" CHAY RA TOI DAY");
                     }
                    System.out.println(" CHAY RA TOI DAY 2 ");
@@ -83,6 +84,7 @@ public class MRerServer extends Thread {
                             hashtable.put(temp, new Integer(count.intValue() + 1));
                         }
                     }
+                    hashtablepro.out(hashtable);
                     Enumeration e = hashtable.keys();
                     String responsestring = "";
                     while (e.hasMoreElements()) {
