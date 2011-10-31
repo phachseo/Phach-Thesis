@@ -89,10 +89,10 @@ public class MRerServer extends Thread {
                     String responsestring = "";
                     while (e.hasMoreElements()) {
                         String temp = (String) e.nextElement();
-                        responsestring = responsestring + "<" + temp + " " + hashnew.get(temp);
+                        responsestring = responsestring + "<" + temp + " " + hashtable.get(temp);
 
                     }
-                    int size = hashnew.size();
+                    int size = hashtable.size();
                     System.out.print(responsestring);
                     String responsestring2 = ("HTTP 200 OK\r\nServer: " + responsestring + "\r\nContent-type: application/binary\r\nContent-length: " + size + "\r\n\r\n");
                     byte[] response = responsestring2.getBytes();
