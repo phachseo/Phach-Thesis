@@ -57,7 +57,7 @@ public class MapReducethread extends Thread {
             MRconnection.closeByteWriter();
             //   MRconnection.closeByteWriter();
             String responseline;
-
+            
             while (!((responseline = MRconnection.getTextReader().readLine()).equals(""))) // Run through the HTTP header
             {
                 
