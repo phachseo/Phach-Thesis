@@ -41,42 +41,46 @@ public class MRListener extends Thread {
                 Socket socket = ss.accept();
                 connection = new Connection(socket, Connection.INCOMING);
                 String incoming = "";
-
-                /*
-                String incomingraw = connection.getTextReader().readLine();
+                String buff="";
                 
-                while (incomingraw != null) {
-                    
-
-                    System.out.println("IncomingRaw la :" + incomingraw);
-
-                    incoming += (incomingraw + "\r\n");
-                    System.out.println("Incoming la :" + incoming);
-
-                    incomingraw = connection.getTextReader().readLine();
-                    System.out.println("count = " + ++count);
-
-                }
-                 *
-                 */
+//                String incomingraw = connection.getTextReader().readLine();
+//            
+//                System.out.println("incomingraw la : "+ incomingraw);
+//                
+//                while (!incomingraw.equals("")) {
+//                    
+//
+//                    System.out.println("IncomingRaw la :" + incomingraw);
+//
+//                    incoming += (incomingraw + "\r\n");
+//                    System.out.println("Incoming la :" + incoming);
+//
+//                   
+//                   // System.out.println("count = " + ++count);
+//
+//                }
+                 
 
                 
                 Reader r = new InputStreamReader(connection.getByteReader());
                 int c;
                 System.out.println("before while");
                 while ((c = r.read()) != -1) {
+                  
                     incoming += (char)c;
-               //     System.out.print((char) c);
-
+                       // System.out.println(" trong while : "+ incoming);
+                        if(incoming.endsWith("Range: bytes=0-"))
+                     //     System.out.print((char) c);
+                            break;
                 }
 
                 System.out.println("phachseo");
                 System.out.println(" nhan dc du lieu ban dau la :" + incoming);
 
                 
-                if (incoming == null) {
-                    continue;
-                } else if (incoming.indexOf(GREETING) == -1) {
+//                if (incoming == null) {
+//                    continue;
+//                } else if (incoming.indexOf(GREETING) == -1) {
 //        {       //   incoming.in
 //                       if(incoming.indexOf(PHACHSEO)!= 1){
 //                        System.out.println("YEAHHHHHHHHHHHHHHHHHHH");
@@ -87,24 +91,24 @@ public class MRListener extends Thread {
 //                       else if {
                     MRerServer mrerserver = new MRerServer(connection, incoming);
                     mrerserver.start();
-                    continue;
-                } else if (HostArray.IncomingHostsgetCount() >= Preferences.MAX_LIVE) {
-                    connection.getTextReader().readLine(); // Gets rid of the extra newline
-                    connection.getByteWriter().write(busy, 0, busy.length);
-                    connection.getByteWriter().flush();
-                } else if (((Mine.ipString).equals(connection.getIPAddress().toString())) && (Mine.port == connection.getIPAddress().getPort())) {
-                    connection.getTextReader().readLine(); // Gets rid of the extra newline
-                    connection.getByteWriter().write(busy, 0, busy.length);
-                    connection.getByteWriter().flush();
-                } else {
-                    connection.getTextReader().readLine(); // Gets rid of the extra newline
-                    connection.getByteWriter().write(ready, 0, ready.length);
-                    connection.getByteWriter().flush();
-                    Server server = new Server(connection);
-                    server.start();
-                    HostArray.IncomingHostsaddConnection(connection);
-                    HostCache.addConnection(connection);
-                }
+//                    continue;
+//                } else if (HostArray.IncomingHostsgetCount() >= Preferences.MAX_LIVE) {
+//                    connection.getTextReader().readLine(); // Gets rid of the extra newline
+//                    connection.getByteWriter().write(busy, 0, busy.length);
+//                    connection.getByteWriter().flush();
+//                } else if (((Mine.ipString).equals(connection.getIPAddress().toString())) && (Mine.port == connection.getIPAddress().getPort())) {
+//                    connection.getTextReader().readLine(); // Gets rid of the extra newline
+//                    connection.getByteWriter().write(busy, 0, busy.length);
+//                    connection.getByteWriter().flush();
+//                } else {
+//                    connection.getTextReader().readLine(); // Gets rid of the extra newline
+//                    connection.getByteWriter().write(ready, 0, ready.length);
+//                    connection.getByteWriter().flush();
+//                    Server server = new Server(connection);
+//                    server.start();
+//                    HostArray.IncomingHostsaddConnection(connection);
+//                    HostCache.addConnection(connection);
+//                }
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
