@@ -68,7 +68,7 @@ public class MRListener extends Thread {
                 while ((c = r.read()) != -1) {
                   
                     incoming += (char)c;
-                        System.out.println(" trong while : "+ incoming);
+                       // System.out.println(" trong while : "+ incoming);
                         if(incoming.endsWith("Range: bytes=0-"))
                      //     System.out.print((char) c);
                             break;
