@@ -48,9 +48,9 @@ public class MRerServer extends Thread {
             groupID = Integer.parseInt(st.nextToken());
             System.out.println("so GroupID la:" + groupID);
             String filecontent = st.nextToken();
-            if (filecontent.endsWith(" HTTP")) {
+            if (filecontent.endsWith("HTTP")) {
 
-                filecontent = filecontent.substring(0, (filecontent.length() - 5));
+                filecontent = filecontent.substring(0, (filecontent.length() - 4));
                 System.out.println("Chay vao Mr server Nhan dc du lieu : " + filecontent);
                 BufferedReader fileIn = null;
                 try {
