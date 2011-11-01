@@ -113,19 +113,19 @@ public class Server extends Thread {
                         
                         // System.out.println("dia chi? ping toi' la` :"+ ping.getIP().toString());
                         
-//                        String pingIPString = ping.getIP().toString();
-//                        int pingPort = ping.getPort();
-//                        Host h = new Host(pingIPString, pingPort);
-//
-//                        if(!HostCache.isPresent(h)){
-//                        HostCache.addHost(h);
-//                        }
+                        String pingIPString = ping.getIP().toString();
+                        int pingPort = ping.getPort();
+                        Host h = new Host(pingIPString, pingPort);
+
+                        if(!HostCache.isPresent(h)){
+                        HostCache.addHost(h);
+                        }
 //                        
                         
 
 
                         PingHandler handler = new PingHandler(ping.getIP(), ping);
-                        //  handler.server = this;
+//
                         handler.start();
                     }
                     continue;
@@ -180,12 +180,12 @@ public class Server extends Thread {
                 
                     Pong pong = new Pong(newpacket);
                      //   System.out.println(" NHAN DC GOI PONG: "+ pong.getIP());
-                    Host h = new Host( pong.getIP().toString(), pong.getPort());
-                    if(!HostCache.isPresent(h)){
-                        HostCache.addHost(h);
-                        }
-                    PongHandler handler = new PongHandler(pong.getIP(), pong);
-                    handler.start();
+//                    Host h = new Host( pong.getIP().toString(), pong.getPort());
+//                    if(!HostCache.isPresent(h)){
+//                        HostCache.addHost(h);
+//                        }
+//                    PongHandler handler = new PongHandler(pong.getIP(), pong);
+//                    handler.start();
                     Pinger.inform(pong);
                     continue;
                 } else if (header.identify() == Packet.QUERY) {
