@@ -69,7 +69,7 @@ public class MRerServer extends Thread {
                    //         System.out.println("Khi TOK : "+tokenize.nextToken());
                             array.add(tokenize.nextToken());
 
-                            System.out.println(" array :" + array);
+                            //System.out.println(" array :" + array);
                                               }
                 
                    System.out.println(" CHAY RA TOI DAY 2 ");
