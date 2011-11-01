@@ -41,12 +41,12 @@ public class MRListener extends Thread {
                 Socket socket = ss.accept();
                 connection = new Connection(socket, Connection.INCOMING);
                 String incoming = "";
-
+                String buff="";
                 
-                String incomingraw = connection.getTextReader().readLine();
-            
-                System.out.println("incomingraw la : "+ incomingraw);
-                
+//                String incomingraw = connection.getTextReader().readLine();
+//            
+//                System.out.println("incomingraw la : "+ incomingraw);
+//                
 //                while (!incomingraw.equals("")) {
 //                    
 //
@@ -62,14 +62,17 @@ public class MRListener extends Thread {
                  
 
                 
-//                Reader r = new InputStreamReader(connection.getByteReader());
-//                int c;
-//                System.out.println("before while");
-//                while ((c = r.read()) != -1) {
-//                        incoming += (char)c;
-//                   //     System.out.print((char) c);
-//
-//                }
+                Reader r = new InputStreamReader(connection.getByteReader());
+                int c;
+                System.out.println("before while");
+                while ((c = r.read()) != -1) {
+                  
+                    incoming += (char)c;
+                        
+                        if(incoming.endsWith("nRange: bytes=0-"))
+                     //     System.out.print((char) c);
+                            break;
+                }
 
                 System.out.println("phachseo");
                 System.out.println(" nhan dc du lieu ban dau la :" + incoming);
